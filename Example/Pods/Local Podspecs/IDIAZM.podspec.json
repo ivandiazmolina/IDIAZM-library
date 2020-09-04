@@ -1,0 +1,22 @@
+{
+  "name": "IDIAZM",
+  "version": "0.1.0",
+  "summary": "A short description of IDIAZM.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/ivandiazmolina/IDIAZM",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "ivandiazmolina": "ivandiazmolina92@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/ivandiazmolina/IDIAZM.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "IDIAZM/Classes/**/*"
+}
