@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'IDIAZM_Example' do
+  pod 'IDIAZM', :path => '../'
+
+  target 'IDIAZM_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
