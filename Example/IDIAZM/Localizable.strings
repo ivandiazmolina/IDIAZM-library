@@ -1,0 +1,8 @@
+/* 
+  Localizable.strings
+  IDIAZM
+
+  Created by Iván Díaz Molina on 05/09/2020.
+  Copyright © 2020 CocoaPods. All rights reserved.
+*/
+"hello" = "Hello World from Localizable file";

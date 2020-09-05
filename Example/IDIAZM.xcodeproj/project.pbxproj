@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C899C272503B9B8007A2699 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C899C262503B9B8007A2699 /* Localizable.strings */; };
 		4F4BE45E4EA629312710D10E /* Pods_IDIAZM_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587D7E6E56BD631D34722EA1 /* Pods_IDIAZM_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		277EFEF31FD58D272A13D8D7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		2C899C262503B9B8007A2699 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		49A478958F661E42A89C4910 /* Pods-IDIAZM_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDIAZM_Example.debug.xcconfig"; path = "Target Support Files/Pods-IDIAZM_Example/Pods-IDIAZM_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		587D7E6E56BD631D34722EA1 /* Pods_IDIAZM_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IDIAZM_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* IDIAZM_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDIAZM_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				2C899C262503B9B8007A2699 /* Localizable.strings */,
 			);
 			name = "Example for IDIAZM";
 			path = IDIAZM;
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				2C899C272503B9B8007A2699 /* Localizable.strings in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);

@@ -58,15 +58,6 @@ public extension String {
     
     // MARK: public methods
     
-    /// Check if a String contains letters and digits
-    ///
-    /// - Returns: True if is valid, otherwise false
-    ///
-    func isAlphanumeric() -> Bool {
-        let notAlphanumeric = NSCharacterSet.decimalDigits.union(NSCharacterSet.letters).inverted
-        return rangeOfCharacter(from: notAlphanumeric, options: String.CompareOptions.literal, range: nil) == nil
-    }
-    
     /// Check if a String is a valid email
     ///
     /// - Returns: True if is valid, otherwise false
@@ -83,46 +74,12 @@ public extension String {
         return self.evaluate(regexp: Constants.Patterns.strongPassword)
     }
     
-    /// Check if a String is a valid DNI
-    ///
-    /// - Returns: True if is valid, otherwise false
-    ///
-    func isValidDNI() -> Bool {
-        return self.evaluate(regexp: Constants.Patterns.DNI)
-    }
-    
-    /// Check if a String is a valid Phone
-    ///
-    /// - Returns: True if is valid, otherwise false
-    ///
-    func isValidPhone() -> Bool {
-        return self.evaluate(regexp: Constants.Patterns.phoneNumber)
-    }
-    
     /// Capitalize the first letter of a String
     ///
     /// - Returns: The same String with the first letter in uppercase
     ///
     func capitalizingFirstLetter() -> String {
         return prefix(1).uppercased() + dropFirst()
-    }
-    
-    /// Change the date format of the string
-    ///
-    /// - Returns: String with the new date format or empty if an error was found
-    ///
-    /// - Parameter inputFormat: current date format
-    /// - Parameter outputFormat: new date format
-    ///
-    func formatDate(inputFormat: String, outputFormat: String) -> String {
-        let inDateFormatter = DateFormatter()
-        inDateFormatter.dateFormat = inputFormat
-        guard let date = inDateFormatter.date(from: self) else {
-            return ""
-        }
-        let outdateFormatter = DateFormatter()
-        outdateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: outputFormat, options: 0, locale: Locale.current)
-        return outdateFormatter.string(from: date)
     }
     
     /// Convert a String in to Bool
