@@ -5,7 +5,7 @@
 //  Created by Iván Díaz Molina on 05/09/2020.
 //
 
-extension UIColor {
+public extension UIColor {
     
     // MARK: static methods
     

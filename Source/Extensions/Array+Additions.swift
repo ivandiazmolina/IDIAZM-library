@@ -6,7 +6,8 @@
 //
 
 import UIKit
-extension Array {
+
+public extension Array {
     
     // MARK: public methods
     
