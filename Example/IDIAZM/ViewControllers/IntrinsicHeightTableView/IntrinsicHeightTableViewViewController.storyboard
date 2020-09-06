@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SK6-vx-HY0">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Intrinsic Height Table View View Controller-->
+        <scene sceneID="xjU-xU-EIs">
+            <objects>
+                <viewController id="SK6-vx-HY0" customClass="IntrinsicHeightTableViewViewController" customModule="IDIAZM_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VT9-qb-Xqt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HLX-Gp-1kN" customClass="IntrinsicHeightTableView" customModule="IDIAZM">
+                                <rect key="frame" x="0.0" y="44" width="414" height="750"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="oWf-aU-eBV">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oWf-aU-eBV" id="Pab-e4-Y8G">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVy-b7-fXV">
+                                <rect key="frame" x="0.0" y="802" width="414" height="60"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="hhe-ML-NWP">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKk-iE-kcs">
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="44"/>
+                                                <state key="normal" title="Add"/>
+                                                <connections>
+                                                    <action selector="onTapAddButton:" destination="SK6-vx-HY0" eventType="touchUpInside" id="AkF-5o-7sP"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONE-ib-ELZ">
+                                                <rect key="frame" x="207" y="0.0" width="207" height="44"/>
+                                                <state key="normal" title="Remove"/>
+                                                <connections>
+                                                    <action selector="onTapRemoveButton:" destination="SK6-vx-HY0" eventType="touchUpInside" id="x4F-rK-7M0"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="68A-Nh-rJO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ZVy-b7-fXV" firstAttribute="top" secondItem="HLX-Gp-1kN" secondAttribute="bottom" constant="8" symbolic="YES" id="2ij-Wf-k58"/>
+                            <constraint firstItem="ZVy-b7-fXV" firstAttribute="leading" secondItem="P6B-up-KZN" secondAttribute="leading" id="H5W-px-kzn"/>
+                            <constraint firstItem="P6B-up-KZN" firstAttribute="bottom" secondItem="ZVy-b7-fXV" secondAttribute="bottom" id="LuC-to-SH5"/>
+                            <constraint firstItem="P6B-up-KZN" firstAttribute="trailing" secondItem="HLX-Gp-1kN" secondAttribute="trailing" id="MyU-Qc-Vm3"/>
+                            <constraint firstItem="HLX-Gp-1kN" firstAttribute="leading" secondItem="P6B-up-KZN" secondAttribute="leading" id="aYd-ao-xBh"/>
+                            <constraint firstItem="HLX-Gp-1kN" firstAttribute="top" secondItem="P6B-up-KZN" secondAttribute="top" id="imB-Cd-9Vb"/>
+                            <constraint firstItem="P6B-up-KZN" firstAttribute="trailing" secondItem="ZVy-b7-fXV" secondAttribute="trailing" id="uxz-lZ-dmn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="P6B-up-KZN"/>
+                    </view>
+                    <connections>
+                        <outlet property="intrinsicHeightTableView" destination="HLX-Gp-1kN" id="xBO-mT-5KF"/>
+                        <outlet property="removeButton" destination="ONE-ib-ELZ" id="7WK-nc-MVc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rhd-Jz-cd9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.739130434782609" y="-255.13392857142856"/>
+        </scene>
+    </scenes>
+</document>

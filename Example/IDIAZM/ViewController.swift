@@ -11,7 +11,11 @@ import IDIAZM
 
 class ViewController: UIViewController {
 
+    // MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: VARS AND LETS
+    private let OPTIONS: [String] = ["Intrinsic Height TableView"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +24,21 @@ class ViewController: UIViewController {
     }
     
     private func setupView() {
-                
-
+        
+        // setup TableView
+        setupTableView()
+        
         // TEST Extensions
         testUIColorExtensions()
         testArrayExtensions()
         testStringExtensions()
         testDateExtensions()
+    }
+    
+    /// init TableView
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     /// method to test extensions of UIColor
@@ -191,5 +203,50 @@ class ViewController: UIViewController {
     
     private func newLine() {
         print("\n")
+    }
+}
+
+// MARK: Navigations
+extension ViewController {
+    
+    private func navigateToIntrinsicHeightTableView() {
+        print("navigateToIntrinsicHeightTableView")
+        
+        let storyBoard = UIStoryboard(name: "IntrinsicHeightTableViewViewController", bundle: nil)
+        if let viewController: IntrinsicHeightTableViewViewController = storyBoard.instantiateInitialViewController() as? IntrinsicHeightTableViewViewController,
+            let navController = navigationController {
+            navController.show(viewController, sender: nil)
+        }
+    }
+    
+}
+
+// MARK: UITableViewDelegate, UITableViewDataSource
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return OPTIONS.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { return UITableViewCell()}
+
+        cell.textLabel?.text = OPTIONS.getElement(indexPath.row)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("Did selected row at: \(indexPath.row)")
+        
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        switch indexPath.row {
+        case 0:
+            navigateToIntrinsicHeightTableView()
+        default: break
+        }
     }
 }
