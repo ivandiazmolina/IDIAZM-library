@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C813193250668B500D32D1F /* CustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813192250668B500D32D1F /* CustomCellViewController.swift */; };
+		2C8131952506690700D32D1F /* CustomCell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C8131942506690700D32D1F /* CustomCell.storyboard */; };
+		2C8131992506695700D32D1F /* CustomViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8131972506695700D32D1F /* CustomViewTableViewCell.swift */; };
+		2C81319A2506695700D32D1F /* CustomViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8131982506695700D32D1F /* CustomViewTableViewCell.xib */; };
 		2C899C272503B9B8007A2699 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C899C262503B9B8007A2699 /* Localizable.strings */; };
 		2CC536AB2504C634000B1B16 /* IntrinsicHeightTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC536AA2504C634000B1B16 /* IntrinsicHeightTableViewViewController.swift */; };
-		2CC536AD2504C665000B1B16 /* IntrinsicHeightTableViewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC536AC2504C665000B1B16 /* IntrinsicHeightTableViewViewController.storyboard */; };
+		2CC536AD2504C665000B1B16 /* IntrinsicHeightTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC536AC2504C665000B1B16 /* IntrinsicHeightTableView.storyboard */; };
 		4F4BE45E4EA629312710D10E /* Pods_IDIAZM_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587D7E6E56BD631D34722EA1 /* Pods_IDIAZM_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -32,9 +36,13 @@
 
 /* Begin PBXFileReference section */
 		277EFEF31FD58D272A13D8D7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		2C813192250668B500D32D1F /* CustomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellViewController.swift; sourceTree = "<group>"; };
+		2C8131942506690700D32D1F /* CustomCell.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomCell.storyboard; sourceTree = "<group>"; };
+		2C8131972506695700D32D1F /* CustomViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewTableViewCell.swift; sourceTree = "<group>"; };
+		2C8131982506695700D32D1F /* CustomViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomViewTableViewCell.xib; sourceTree = "<group>"; };
 		2C899C262503B9B8007A2699 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		2CC536AA2504C634000B1B16 /* IntrinsicHeightTableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicHeightTableViewViewController.swift; sourceTree = "<group>"; };
-		2CC536AC2504C665000B1B16 /* IntrinsicHeightTableViewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IntrinsicHeightTableViewViewController.storyboard; sourceTree = "<group>"; };
+		2CC536AC2504C665000B1B16 /* IntrinsicHeightTableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IntrinsicHeightTableView.storyboard; sourceTree = "<group>"; };
 		49A478958F661E42A89C4910 /* Pods-IDIAZM_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDIAZM_Example.debug.xcconfig"; path = "Target Support Files/Pods-IDIAZM_Example/Pods-IDIAZM_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		587D7E6E56BD631D34722EA1 /* Pods_IDIAZM_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IDIAZM_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* IDIAZM_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDIAZM_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,9 +83,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C8131912506681400D32D1F /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C8131962506693A00D32D1F /* View */,
+				2C813192250668B500D32D1F /* CustomCellViewController.swift */,
+				2C8131942506690700D32D1F /* CustomCell.storyboard */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		2C8131962506693A00D32D1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C8131972506695700D32D1F /* CustomViewTableViewCell.swift */,
+				2C8131982506695700D32D1F /* CustomViewTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2CC536A72504C5F9000B1B16 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2C8131912506681400D32D1F /* CustomCell */,
 				2CC536A92504C61F000B1B16 /* IntrinsicHeightTableView */,
 			);
 			path = ViewControllers;
@@ -87,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				2CC536AA2504C634000B1B16 /* IntrinsicHeightTableViewViewController.swift */,
-				2CC536AC2504C665000B1B16 /* IntrinsicHeightTableViewViewController.storyboard */,
+				2CC536AC2504C665000B1B16 /* IntrinsicHeightTableView.storyboard */,
 			);
 			path = IntrinsicHeightTableView;
 			sourceTree = "<group>";
@@ -271,10 +299,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C81319A2506695700D32D1F /* CustomViewTableViewCell.xib in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				2C899C272503B9B8007A2699 /* Localizable.strings in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
-				2CC536AD2504C665000B1B16 /* IntrinsicHeightTableViewViewController.storyboard in Resources */,
+				2CC536AD2504C665000B1B16 /* IntrinsicHeightTableView.storyboard in Resources */,
+				2C8131952506690700D32D1F /* CustomCell.storyboard in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +391,8 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				2CC536AB2504C634000B1B16 /* IntrinsicHeightTableViewViewController.swift in Sources */,
+				2C8131992506695700D32D1F /* CustomViewTableViewCell.swift in Sources */,
+				2C813193250668B500D32D1F /* CustomCellViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

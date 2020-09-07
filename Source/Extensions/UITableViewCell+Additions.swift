@@ -16,4 +16,8 @@ public extension UITableViewCell {
     static var nib: UINib {
         return UINib(nibName: nibName, bundle: nil)
     }
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
 }

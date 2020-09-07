@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: VARS AND LETS
-    private let OPTIONS: [String] = ["Intrinsic Height TableView"]
+    private let OPTIONS: [String] = ["Intrinsic Height TableView", "Custom Cell"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -222,11 +222,23 @@ class ViewController: UIViewController {
 // MARK: Navigations
 extension ViewController {
     
+    /// method that navigates to IntrinsicHeightTableViewViewController
     private func navigateToIntrinsicHeightTableView() {
         print("navigateToIntrinsicHeightTableView")
         
-        let storyBoard = UIStoryboard(name: "IntrinsicHeightTableViewViewController", bundle: nil)
+        let storyBoard = UIStoryboard(name: "IntrinsicHeightTableView", bundle: nil)
         if let viewController: IntrinsicHeightTableViewViewController = storyBoard.instantiateInitialViewController() as? IntrinsicHeightTableViewViewController,
+            let navController = navigationController {
+            navController.show(viewController, sender: nil)
+        }
+    }
+    
+    /// method that navigates to CustomCellViewController
+    private func navigateToCustomCell() {
+        print("navigateToCustomCell")
+        
+        let storyBoard = UIStoryboard(name: "CustomCell", bundle: nil)
+        if let viewController: CustomCellViewController = storyBoard.instantiateInitialViewController() as? CustomCellViewController,
             let navController = navigationController {
             navController.show(viewController, sender: nil)
         }
@@ -257,8 +269,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: false)
         
         switch indexPath.row {
-        case 0:
-            navigateToIntrinsicHeightTableView()
+        case 0: navigateToIntrinsicHeightTableView()
+        case 1: navigateToCustomCell()
         default: break
         }
     }
