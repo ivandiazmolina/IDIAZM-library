@@ -10,6 +10,7 @@ import UIKit
 class IntrinsicHeightTableView: UITableView {
     
     var contentSizeBool = true
+    
     override var contentSize: CGSize {
         didSet {
             if contentSizeBool {
@@ -17,11 +18,13 @@ class IntrinsicHeightTableView: UITableView {
             }
         }
     }
+    
     override func reloadData() {
         super.reloadData()
         invalidateIntrinsicContentSize()
         layoutIfNeeded()
     }
+    
     override var intrinsicContentSize: CGSize {
         layoutIfNeeded()
         return CGSize(width: UIViewNoIntrinsicMetric, height: contentSize.height)

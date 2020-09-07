@@ -28,11 +28,14 @@ class ViewController: UIViewController {
         // setup TableView
         setupTableView()
         
-        // TEST Extensions
+        // test Extensions
         testUIColorExtensions()
         testArrayExtensions()
         testStringExtensions()
         testDateExtensions()
+        
+        // test Utils
+        testCustomLog()
     }
     
     /// init TableView
@@ -199,6 +202,16 @@ class ViewController: UIViewController {
         print("Very short weekday: \(day.getVeryShortWeekdaySymbols())")
         
         newLine()
+    }
+    
+    /// method to test CustomLog
+    private func testCustomLog() {
+        
+        CustomLog.log(type: .default, category: .default, item: "This is a default message")
+        CustomLog.log(type: .info, category: .default, item: "This is a info message")
+        CustomLog.log(type: .debug, category: .default, item: "This is a debug message")
+        CustomLog.log(type: .error, category: .default, item: "This is a error message")
+        CustomLog.log(type: .success, category: .default, item: "This is a success message")
     }
     
     private func newLine() {

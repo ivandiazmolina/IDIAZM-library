@@ -11,6 +11,7 @@
 		2C6648ED25037468008A8893 /* Threads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6648EC25037468008A8893 /* Threads.swift */; };
 		2C6648F025037595008A8893 /* IntrinsicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6648EF25037595008A8893 /* IntrinsicHeightTableView.swift */; };
 		2C6648F2250378AC008A8893 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6648F1250378AC008A8893 /* UIColor+Additions.swift */; };
+		2C8131902506632500D32D1F /* CustomLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81318F2506632500D32D1F /* CustomLog.swift */; };
 		2C899C292503D069007A2699 /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C899C282503D069007A2699 /* Date+Additions.swift */; };
 		2CEB5693250265A8007A2BAE /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB5692250265A8007A2BAE /* UIView+Additions.swift */; };
 		2CEB569525026D49007A2BAE /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB569425026D49007A2BAE /* Array+Additions.swift */; };
@@ -55,6 +56,7 @@
 		2C6648EC25037468008A8893 /* Threads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Threads.swift; sourceTree = "<group>"; };
 		2C6648EF25037595008A8893 /* IntrinsicHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicHeightTableView.swift; sourceTree = "<group>"; };
 		2C6648F1250378AC008A8893 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		2C81318F2506632500D32D1F /* CustomLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLog.swift; sourceTree = "<group>"; };
 		2C899C282503D069007A2699 /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
 		2CEB5692250265A8007A2BAE /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		2CEB569425026D49007A2BAE /* Array+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				2C6648EC25037468008A8893 /* Threads.swift */,
+				2C81318F2506632500D32D1F /* CustomLog.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				2C6648F025037595008A8893 /* IntrinsicHeightTableView.swift in Sources */,
 				3890CCF654D320C81F0AF52843C7CBC0 /* IDIAZM-dummy.m in Sources */,
 				2C899C292503D069007A2699 /* Date+Additions.swift in Sources */,
+				2C8131902506632500D32D1F /* CustomLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
