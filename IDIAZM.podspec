@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name                  = 'IDIAZM'
-  s.version               = '0.0.1'
+  s.version               = '0.0.2'
   s.summary               = 'This is a test CocoaPods Library for iOS Swift.'
   s.homepage              = 'https://github.com/ivandiazmolina/IDIAZM-library'
   s.license               = 'MIT'
@@ -17,5 +17,5 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   s.swift_versions        = ['5.0']
   s.ios.deployment_target = '10.0'
-  s.source_files          = 'Source/*.swift'
+  s.source_files          = 'Source/**/*.swift'
 end
