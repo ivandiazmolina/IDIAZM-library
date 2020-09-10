@@ -39,7 +39,7 @@ $SRCROOT/$PROJECT_NAME/YourProjectName-Bridging-Header.h
 
 Finally, in us "Bridging-Header.h" file, We are going to type the library.
 
-```swift
+```obj-c
 #import <IDIAZM/IDIAZM-Swift.h>
 ```
 
