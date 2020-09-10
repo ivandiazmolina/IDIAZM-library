@@ -84,10 +84,10 @@ class ViewController: UIViewController {
         print("=================")
         
         // get element from array of position 1 --> "data1"
-        print("Element: \(data.getElement(1))")
+        print("Element: \(String(describing: data.getElement(1)))")
         
         // get element from array of position 11 --> nil
-        print("Element: \(data.getElement(11))")
+        print("Element: \(String(describing: data.getElement(11)))")
         
         newLine()
     }
@@ -125,12 +125,12 @@ class ViewController: UIViewController {
         print("\(weakPassword) is strong password?: \(weakPassword.isValidStrongPassword())")
         
         // test to bool
-        print("'true' to bool: \("true".toBool())")
-        print("'1' to bool: \("1".toBool())")
-        print("'yes' to bool: \("yes".toBool())")
-        print("'false' to bool: \("false".toBool())")
-        print("'0' to bool: \("0".toBool())")
-        print("'no' to bool: \("no".toBool())")
+        print("'true' to bool: \(String(describing: "true".toBool()))")
+        print("'1' to bool: \(String(describing: "1".toBool()))")
+        print("'yes' to bool: \(String(describing: "yes".toBool()))")
+        print("'false' to bool: \(String(describing: "false".toBool()))")
+        print("'0' to bool: \(String(describing: "0".toBool()))")
+        print("'no' to bool: \(String(describing: "no".toBool()))")
         
         // test capitalize first letter
         print("capitalizing 'hello world: \("hello world".capitalizingFirstLetter())")
@@ -197,15 +197,18 @@ class ViewController: UIViewController {
         
         print("Example week day: \(day)")
         
-        print("Short weekday: \(day.getShortWeekdaySymbols())")
+        print("Short weekday: \(String(describing: day.getShortWeekdaySymbols()))")
         
-        print("Very short weekday: \(day.getVeryShortWeekdaySymbols())")
+        print("Very short weekday: \(String(describing: day.getVeryShortWeekdaySymbols()))")
         
         newLine()
     }
     
     /// method to test CustomLog
     private func testCustomLog() {
+        
+        print("CUSTOM LOG")
+        print("=================")
         
         CustomLog.log(type: .default, category: .default, item: "This is a default message")
         CustomLog.log(type: .info, category: .default, item: "This is a info message")
