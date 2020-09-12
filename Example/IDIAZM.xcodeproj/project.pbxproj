@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C46FE42250BDB6200157C93 /* FABViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46FE41250BDB6200157C93 /* FABViewController.swift */; };
+		2C46FE44250BDB6B00157C93 /* FAB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C46FE43250BDB6B00157C93 /* FAB.storyboard */; };
 		2C813193250668B500D32D1F /* CustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C813192250668B500D32D1F /* CustomCellViewController.swift */; };
 		2C8131952506690700D32D1F /* CustomCell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C8131942506690700D32D1F /* CustomCell.storyboard */; };
 		2C8131992506695700D32D1F /* CustomViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8131972506695700D32D1F /* CustomViewTableViewCell.swift */; };
@@ -36,6 +38,9 @@
 
 /* Begin PBXFileReference section */
 		277EFEF31FD58D272A13D8D7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		2C46FE41250BDB6200157C93 /* FABViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FABViewController.swift; sourceTree = "<group>"; };
+		2C46FE43250BDB6B00157C93 /* FAB.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAB.storyboard; sourceTree = "<group>"; };
+		2C62B27A250BEF2000D4D51D /* IDIAZM-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDIAZM-Bridging-Header.h"; sourceTree = "<group>"; };
 		2C813192250668B500D32D1F /* CustomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellViewController.swift; sourceTree = "<group>"; };
 		2C8131942506690700D32D1F /* CustomCell.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomCell.storyboard; sourceTree = "<group>"; };
 		2C8131972506695700D32D1F /* CustomViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -83,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C46FE40250BDB1F00157C93 /* FAB */ = {
+			isa = PBXGroup;
+			children = (
+				2C46FE41250BDB6200157C93 /* FABViewController.swift */,
+				2C46FE43250BDB6B00157C93 /* FAB.storyboard */,
+			);
+			path = FAB;
+			sourceTree = "<group>";
+		};
 		2C8131912506681400D32D1F /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +119,7 @@
 		2CC536A72504C5F9000B1B16 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2C46FE40250BDB1F00157C93 /* FAB */,
 				2C8131912506681400D32D1F /* CustomCell */,
 				2CC536A92504C61F000B1B16 /* IntrinsicHeightTableView */,
 			);
@@ -152,6 +167,7 @@
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				2C899C262503B9B8007A2699 /* Localizable.strings */,
+				2C62B27A250BEF2000D4D51D /* IDIAZM-Bridging-Header.h */,
 			);
 			name = "Example for IDIAZM";
 			path = IDIAZM;
@@ -304,6 +320,7 @@
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				2CC536AD2504C665000B1B16 /* IntrinsicHeightTableView.storyboard in Resources */,
 				2C8131952506690700D32D1F /* CustomCell.storyboard in Resources */,
+				2C46FE44250BDB6B00157C93 /* FAB.storyboard in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +406,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				2C46FE42250BDB6200157C93 /* FABViewController.swift in Sources */,
 				2CC536AB2504C634000B1B16 /* IntrinsicHeightTableViewViewController.swift in Sources */,
 				2C8131992506695700D32D1F /* CustomViewTableViewCell.swift in Sources */,
 				2C813193250668B500D32D1F /* CustomCellViewController.swift in Sources */,

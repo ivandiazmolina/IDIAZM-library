@@ -118,7 +118,7 @@ open class FABItem: NSObject {
         setupView()
                 
         // setup button
-        setupButton()
+        setupButton(image)
         
         // setup label
         setupLabel(text)
@@ -151,7 +151,7 @@ open class FABItem: NSObject {
     }
     
     /// Setup the button
-    fileprivate func setupButton() {
+    fileprivate func setupButton(_ image: UIImage?) {
         
         button = UIButton(type: .custom)
         button.frame = CGRect(origin: CGPoint(x: VIEW_SIZE.width - BUTTON_SIZE.width, y: 0), size: BUTTON_SIZE)

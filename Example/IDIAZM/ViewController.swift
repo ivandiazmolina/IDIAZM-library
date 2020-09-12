@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IDIAZM
 
 class ViewController: UIViewController {
 
@@ -15,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: VARS AND LETS
-    private let OPTIONS: [String] = ["Intrinsic Height TableView", "Custom Cell"]
+    private let OPTIONS: [String] = ["Intrinsic Height TableView", "Custom Cell", "FAB"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -247,6 +246,17 @@ extension ViewController {
         }
     }
     
+    /// method that navigates to FAB
+    private func navigateToFAB() {
+        print("navigateToFAB")
+        
+        let storyBoard = UIStoryboard(name: "FAB", bundle: nil)
+        if let viewController: FABViewController = storyBoard.instantiateInitialViewController() as? FABViewController,
+            let navController = navigationController {
+            navController.show(viewController, sender: nil)
+        }
+    }
+    
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
@@ -274,6 +284,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0: navigateToIntrinsicHeightTableView()
         case 1: navigateToCustomCell()
+        case 2: navigateToFAB()
         default: break
         }
     }
