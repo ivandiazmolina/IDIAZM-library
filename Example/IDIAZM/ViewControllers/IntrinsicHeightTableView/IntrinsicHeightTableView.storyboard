@@ -33,30 +33,33 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVy-b7-fXV">
                                 <rect key="frame" x="0.0" y="802" width="414" height="60"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="hhe-ML-NWP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKk-iE-kcs">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="44"/>
-                                                <state key="normal" title="Add"/>
-                                                <connections>
-                                                    <action selector="onTapAddButton:" destination="SK6-vx-HY0" eventType="touchUpInside" id="AkF-5o-7sP"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONE-ib-ELZ">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="44"/>
-                                                <state key="normal" title="Remove"/>
-                                                <connections>
-                                                    <action selector="onTapRemoveButton:" destination="SK6-vx-HY0" eventType="touchUpInside" id="x4F-rK-7M0"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKk-iE-kcs">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="60"/>
+                                        <state key="normal" title="Add"/>
+                                        <connections>
+                                            <action selector="onTapAddButton:" destination="SK6-vx-HY0" eventType="touchUpInside" id="AkF-5o-7sP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONE-ib-ELZ">
+                                        <rect key="frame" x="207" y="0.0" width="207" height="60"/>
+                                        <state key="normal" title="Remove"/>
+                                        <connections>
+                                            <action selector="onTapRemoveButton:" destination="SK6-vx-HY0" eventType="touchUpInside" id="x4F-rK-7M0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="ONE-ib-ELZ" firstAttribute="leading" secondItem="cKk-iE-kcs" secondAttribute="trailing" id="2qN-ZR-mDB"/>
                                     <constraint firstAttribute="height" constant="60" id="68A-Nh-rJO"/>
+                                    <constraint firstItem="ONE-ib-ELZ" firstAttribute="baseline" secondItem="cKk-iE-kcs" secondAttribute="baseline" id="6iK-qI-XV8"/>
+                                    <constraint firstItem="ONE-ib-ELZ" firstAttribute="height" secondItem="cKk-iE-kcs" secondAttribute="height" id="NL2-wa-xZv"/>
+                                    <constraint firstItem="cKk-iE-kcs" firstAttribute="top" secondItem="ZVy-b7-fXV" secondAttribute="top" id="Xk8-TH-UeS"/>
+                                    <constraint firstItem="ONE-ib-ELZ" firstAttribute="width" secondItem="cKk-iE-kcs" secondAttribute="width" id="att-cf-0PT"/>
+                                    <constraint firstItem="cKk-iE-kcs" firstAttribute="width" secondItem="ZVy-b7-fXV" secondAttribute="width" multiplier="0.5" id="oli-qF-hh3"/>
+                                    <constraint firstAttribute="bottom" secondItem="cKk-iE-kcs" secondAttribute="bottom" id="sO8-ty-ojB"/>
+                                    <constraint firstItem="cKk-iE-kcs" firstAttribute="height" secondItem="ZVy-b7-fXV" secondAttribute="height" id="t3u-oy-Do5"/>
+                                    <constraint firstItem="cKk-iE-kcs" firstAttribute="leading" secondItem="ZVy-b7-fXV" secondAttribute="leading" id="zt2-ja-ztO"/>
                                 </constraints>
                             </view>
                         </subviews>
