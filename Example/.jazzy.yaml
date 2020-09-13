@@ -1,0 +1,7 @@
+author: IDIAZM
+author_url: https://idiazm.es/
+github_url: https://github.com/ivandiazmolina/IDIAZM-library
+module: IDIAZM
+output: docs
+theme: fullwidth
+xcodebuild_arguments: [-workspace, 'IDIAZM.xcworkspace', -scheme, 'IDIAZM']
