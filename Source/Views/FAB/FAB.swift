@@ -19,7 +19,7 @@ open class FAB: NSObject {
     /// View that will hold the placement of the button's actions
     fileprivate var contentView: UIView!
     
-    /// View where the *floatButton* will be displayed
+    /// View where the FAB will be displayed
     fileprivate var parentView: UIView!
     
     /// Blur effect that will be presented when the button is active
@@ -51,6 +51,12 @@ open class FAB: NSObject {
     
     
     // MARK: FAB PROPERTIES
+    
+    /// FAB trailing
+    fileprivate let FAB_TRAILING: CGFloat = -16.0
+    
+    /// FAB bottom
+    fileprivate let FAB_BOTTOM: CGFloat = 16.0
     
     /// FAB shadow opacity
     fileprivate let FAB_SHADOW_OPACITY: Float = 1.0
@@ -112,10 +118,13 @@ open class FAB: NSObject {
     /// Indicates if the buttons is active
     fileprivate(set) open var active: Bool = false
     
+    /// The tabBar if exists in order to calculate the position of FAB
+    fileprivate(set) open var tabBar: UITabBar?
+    
     
     // MARK: INIT
     
-    public init(attachedToView view: UIView, items: [FABItem]?) {
+    public init(attachedToView view: UIView, items: [FABItem]?, tabBar: UITabBar? = nil) {
         
         super.init()
         
@@ -124,6 +133,9 @@ open class FAB: NSObject {
         
         // init items
         self.items = items
+        
+        // init has tabBar
+        self.tabBar = tabBar
         
         // setup View
         self.setupView()
@@ -220,7 +232,7 @@ open class FAB: NSObject {
     fileprivate func setupFAB() {
         
         fab = UIButton(type: .custom)
-//        fab.layer.cornerRadius = BUTTON_RADIUS / 2
+        fab.layer.cornerRadius = BUTTON_RADIUS / 2
         fab.layer.shadowOpacity = FAB_SHADOW_OPACITY
         fab.layer.shadowRadius = FAB_SHADOW_RADIUS
         fab.layer.shadowOffset = FAB_SHADOW_OFFSET
@@ -256,32 +268,13 @@ open class FAB: NSObject {
     /// Install all the necessary constraints for the button regarding to parentView
     fileprivate func setupConstraints() {
         
-        // Width and Height
-        let views: [String: UIView] = ["floatButton":fab, "parentView":parentView]
-        let width = NSLayoutConstraint.constraints(withVisualFormat: "H:[floatButton(\(BUTTON_RADIUS))]", options: NSLayoutConstraint.FormatOptions.alignAllCenterX, metrics: nil, views: views)
-        let height = NSLayoutConstraint.constraints(withVisualFormat: "V:[floatButton(\(BUTTON_RADIUS))]", options: NSLayoutConstraint.FormatOptions.alignAllCenterX, metrics: nil, views: views)
-        fab.addConstraints(width)
-        fab.addConstraints(height)
-        
+        let safeGuide = parentView.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-           fab.trailingAnchor.constraint(equalTo: parentView.trailingAnchor),
-           fab.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
+            fab.widthAnchor.constraint(equalToConstant: BUTTON_RADIUS),
+            fab.heightAnchor.constraint(equalToConstant: BUTTON_RADIUS),
+            fab.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: FAB_TRAILING),
+            fab.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -(tabBar?.frame.height ?? FAB_BOTTOM))
         ])
-
-        
-        let guide = parentView.safeAreaLayoutGuide
-        let margins = parentView.layoutMarginsGuide
-        NSLayoutConstraint.activate([
-            fab.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            guide.bottomAnchor.constraint(equalToSystemSpacingBelow: fab.bottomAnchor, multiplier: 1.0)
-        ])
-        
-//        // Trailing and Bottom
-//        let trailingSpacing = NSLayoutConstraint.constraints(withVisualFormat: "H:[floatButton]-15-|", options: NSLayoutConstraint.FormatOptions.alignAllCenterX, metrics: nil, views: views)
-//        let bottomSpacing = NSLayoutConstraint.constraints(withVisualFormat: "V:[floatButton]-100-|", options: NSLayoutConstraint.FormatOptions.alignAllCenterX, metrics: nil, views: views)
-//
-//        parentView.addConstraints(trailingSpacing)
-//        parentView.addConstraints(bottomSpacing)
     }
     
     /// Defines the position of all items
@@ -299,6 +292,7 @@ open class FAB: NSObject {
     
     /// Method that toogle the state of menu
     fileprivate func toggle() {
+        
         animateMenu()
         showBlur()
         
@@ -370,6 +364,7 @@ open class FAB: NSObject {
     ///
     /// - Parameter scale: size button should be scaled
     fileprivate func animatePressingWith(scale: CGFloat) {
+        
         UIView.animate(withDuration: TimeInterval(ANIMATION_DURATION), delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: .allowAnimatedContent, animations: { [weak self] in
             self?.fab.transform = CGAffineTransform(scaleX: scale, y: scale)
             }, completion: nil)

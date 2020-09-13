@@ -10,6 +10,10 @@ import UIKit
 
 class FABViewController: UIViewController {
     
+    // MARK: IBOutlets
+    @IBOutlet weak var tabBar: UITabBar!
+
+    // MARK: VARS AND LETS
     var fab : FAB!
     
     override func viewDidLoad() {
@@ -19,8 +23,9 @@ class FABViewController: UIViewController {
         setupView()
     }
     
+    /// setup view
     func setupView() {
-                
+        
         let facebook = FABItem(title: "Facebook", image: UIImage(named: "facebook_round"))
         facebook.action = { item in
             print("Facebook tapped")
@@ -31,9 +36,8 @@ class FABViewController: UIViewController {
             print("Twitter tapped")
         }
         
-        fab = FAB(attachedToView: self.view, items: [facebook, twitter])
+        fab = FAB(attachedToView: self.view, items: [facebook, twitter], tabBar: tabBar)
         fab.setTitle("+", forState: UIControl.State())
-//        fab.backgroundColor = UIColor(red: 238.0/255.0, green: 130.0/255.0, blue: 130.0/255.0, alpha: 1)
         fab.action = { button in
             button.toggleMenu()
         }

@@ -16,7 +16,7 @@ open class FABItem: NSObject {
     /// View that will hold the item's button and label
     internal var view: UIView!
     
-    /// Label that contain the item's *text*
+    /// Label that contain the text of item
     fileprivate var label: UILabel!
     
     /// Main button that will perform the defined action
@@ -25,6 +25,7 @@ open class FABItem: NSObject {
     /// Image used by the button
     fileprivate var image: UIImage!
     
+    // Label background of item
     fileprivate var labelBackground: UIView!
     
     
@@ -56,7 +57,7 @@ open class FABItem: NSObject {
     
     // MARK: BACKGROUND PROPERTIES
     
-    /// Background insert
+    /// Background inset
     fileprivate let BACKGROUND_INSET = CGSize(width: 10, height: 10)
     
     
@@ -144,6 +145,7 @@ open class FABItem: NSObject {
     
     /// Setup the view
     fileprivate func setupView() {
+        
         view = UIView(frame: CGRect(origin: CGPoint.zero, size: VIEW_SIZE))
         view.alpha = 0
         view.isUserInteractionEnabled = true
@@ -196,18 +198,18 @@ open class FABItem: NSObject {
         labelBackground.layer.shadowRadius = LABELBACKGROUND_SHADOW_RADIUS
         labelBackground.layer.shadowColor = LABELBACKGROUND_SHADOW_COLOR
         
-        // Adjust the label's background inset
+        // Adjust inset of labelBackground
         labelBackground.frame.size.width = label.frame.size.width + BACKGROUND_INSET.width
         labelBackground.frame.size.height = label.frame.size.height + BACKGROUND_INSET.height
         label.frame.origin.x = label.frame.origin.x + BACKGROUND_INSET.width / 2
         label.frame.origin.y = label.frame.origin.y + BACKGROUND_INSET.height / 2
         
-        // Adjust label's background position
+        // Adjust position of labelBackground
         labelBackground.frame.origin.x = CGFloat(LABEL_POSITION - label.frame.size.width)
         labelBackground.center.y = view.center.y
         labelBackground.addSubview(label)
         
-        // Add Tap Gestures Recognizer
+        // add tap gesture to view
         let tap = UITapGestureRecognizer(target: self, action: #selector(labelTapped(_:)))
         view.addGestureRecognizer(tap)
         
