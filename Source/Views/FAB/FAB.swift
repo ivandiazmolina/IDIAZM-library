@@ -56,7 +56,7 @@ open class FAB: NSObject {
     fileprivate let FAB_TRAILING: CGFloat = -16.0
     
     /// FAB bottom
-    fileprivate let FAB_BOTTOM: CGFloat = 16.0
+    fileprivate let FAB_BOTTOM: CGFloat = -16.0
     
     /// FAB shadow opacity
     fileprivate let FAB_SHADOW_OPACITY: Float = 1.0
@@ -118,13 +118,21 @@ open class FAB: NSObject {
     /// Indicates if the buttons is active
     fileprivate(set) open var active: Bool = false
     
-    /// The tabBar if exists in order to calculate the position of FAB
-    fileprivate(set) open var tabBar: UITabBar?
+    /// The bottom position of fab. Default 16
+    fileprivate(set) open var bottom: CGFloat = 16.0
+    
+    /// The trailing position of fab. Default 16
+    fileprivate(set) open var trailing: CGFloat = 16.0
     
     
     // MARK: INIT
     
-    public init(attachedToView view: UIView, items: [FABItem]?, tabBar: UITabBar? = nil) {
+    /// Constructor
+    /// - Parameter view: View where the FAB will be displayed
+    /// - Parameter items: items of FAB
+    /// - Parameter bottom: bottom position of FAB. Default 16
+    /// - Parameter trailing: trailing position of FAB. Default 16
+    public init(attachedToView view: UIView, items: [FABItem]?, bottom: CGFloat = 16, trailing: CGFloat = 16) {
         
         super.init()
         
@@ -134,8 +142,9 @@ open class FAB: NSObject {
         // init items
         self.items = items
         
-        // init has tabBar
-        self.tabBar = tabBar
+        // init bottom and trailing
+        self.bottom = -bottom
+        self.trailing = -trailing
         
         // setup View
         self.setupView()
@@ -180,6 +189,21 @@ open class FAB: NSObject {
         fab.setImage(image, for: state)
         fab.adjustsImageWhenHighlighted = false
         fab.contentEdgeInsets = UIEdgeInsets.zero
+    }
+    
+    /// Sets the position of fab relative to bottom/right on screen
+    /// - Parameter bottom: distance from bottom of screen
+    /// - Parameter trailing: distance from trailing of screen
+    open func setPosition(bottom: CGFloat, trailing: CGFloat) {
+        
+        self.bottom = -bottom
+        self.trailing = -trailing
+        
+        let safeGuide = parentView.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            fab.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: bottom),
+            fab.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: trailing)
+        ])
     }
     
     /// Shows or hides all the ActionButton's actions
@@ -265,15 +289,15 @@ open class FAB: NSObject {
         contentView.addGestureRecognizer(tap)
     }
     
-    /// Install all the necessary constraints for the button regarding to parentView
+    /// Install all the necessary constraints for the button regarding to parentView, by default is 16x16
     fileprivate func setupConstraints() {
         
         let safeGuide = parentView.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             fab.widthAnchor.constraint(equalToConstant: BUTTON_RADIUS),
             fab.heightAnchor.constraint(equalToConstant: BUTTON_RADIUS),
-            fab.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: FAB_TRAILING),
-            fab.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -(tabBar?.frame.height ?? FAB_BOTTOM))
+            fab.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: bottom),
+            fab.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: trailing)
         ])
     }
     

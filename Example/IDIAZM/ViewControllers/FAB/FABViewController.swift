@@ -8,10 +8,9 @@
 
 import UIKit
 
-class FABViewController: UIViewController {
+class FABViewController: UITabBarController {
     
     // MARK: IBOutlets
-    @IBOutlet weak var tabBar: UITabBar!
 
     // MARK: VARS AND LETS
     var fab : FAB!
@@ -36,10 +35,13 @@ class FABViewController: UIViewController {
             print("Twitter tapped")
         }
         
-        fab = FAB(attachedToView: self.view, items: [facebook, twitter], tabBar: tabBar)
+        fab = FAB(attachedToView: self.view, items: [facebook, twitter])
+//        fab = FAB(attachedToView: self.view, items: [facebook, twitter], bottom: 50, trailing: 50)
         fab.setTitle("+", forState: UIControl.State())
         fab.action = { button in
             button.toggleMenu()
         }
+        
+//        fab.setPosition(bottom: fab.bottom, trailing: 100)
     }
 }
