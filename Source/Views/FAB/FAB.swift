@@ -201,8 +201,8 @@ open class FAB: NSObject {
         
         let safeGuide = parentView.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            fab.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: bottom),
-            fab.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: trailing)
+            fab.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: self.bottom),
+            fab.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: self.trailing)
         ])
     }
     

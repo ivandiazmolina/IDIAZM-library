@@ -35,13 +35,13 @@ class FABViewController: UITabBarController {
             print("Twitter tapped")
         }
         
-        fab = FAB(attachedToView: self.view, items: [facebook, twitter])
-//        fab = FAB(attachedToView: self.view, items: [facebook, twitter], bottom: 50, trailing: 50)
+        fab = FAB(attachedToView: self.view, items: [facebook, twitter]) // optional parameters: bottom and trailing
         fab.setTitle("+", forState: UIControl.State())
         fab.action = { button in
             button.toggleMenu()
         }
         
-//        fab.setPosition(bottom: fab.bottom, trailing: 100)
+        // change the position bottom and trailing
+        fab.setPosition(bottom: 56, trailing: 56)
     }
 }
