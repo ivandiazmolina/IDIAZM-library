@@ -19,6 +19,6 @@ public extension UITableView {
     /// - Parameter type: The custom cell that you want register
     ///
     func register<T: UITableViewCell> (_ type: T.Type) {
-        register(T.nib, forCellReuseIdentifier: T.nibName)
+        register(T.nib, forCellReuseIdentifier: T.identifier)
     }
 }

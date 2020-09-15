@@ -38,6 +38,15 @@ public extension UIView {
         addSubview(view)
     }
     
+    static var nib: UINib {
+        let bundle = Bundle(for: self)
+        return UINib(nibName: String(describing: self), bundle: bundle)
+    }
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+    
     
     // MARK: private methods
     

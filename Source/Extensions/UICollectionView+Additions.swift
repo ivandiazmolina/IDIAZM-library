@@ -19,6 +19,6 @@ public extension UICollectionView {
     /// - Parameter type: The custom cell that you want register
     ///
     func register<T: UICollectionViewCell> (_ type: T.Type) {
-        register(T.nib, forCellWithReuseIdentifier: T.nibName)
+        register(T.nib, forCellWithReuseIdentifier: T.identifier)
     }
 }
