@@ -154,6 +154,12 @@ class ViewController: UIViewController {
         // test first day of current month
         print("First day of current month: \(date.firstDayOfCurrentMonth)")
         
+        // test start of current day
+        print("Start of day: \(date.startOfDay)")
+        
+        // test end of current day
+        print("End of day: \(date.endOfDay)")
+        
         // test is first day of current month
         print("Is first day of current month?: \(date.isFirstDayOfCurrentMonth)")
         

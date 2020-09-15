@@ -6,10 +6,22 @@
 //
 
 public extension Date {
+        
+    var startOfDay: Date {
+        let calendar = getCurrentCalendarUTC()
+        return calendar.startOfDay(for: self)
+    }
+
+    var endOfDay: Date {
+        let calendar = getCurrentCalendarUTC()
+        return calendar.date(byAdding: DateComponents(day: -1, second: -1), to: startOfDay)!
+    }
+    
     
     /// Get the first day of current month
     var firstDayOfCurrentMonth: Date {
-        return (Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self)))!
+        let calendar = getCurrentCalendarUTC()
+        return calendar.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
     }
     
     /// Check if the day is the day of current month
@@ -19,36 +31,37 @@ public extension Date {
     
     /// Get the last day of current month
     var lastDayOfCurrentMonth: Date {
-        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfCurrentMonth)!
+        let calendar = getCurrentCalendarUTC()
+        return calendar.date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfCurrentMonth)!
     }
     
     /// Get current year
     var year: Int {
-        let calendar = Calendar.current
+        let calendar = getCurrentCalendarUTC()
         return calendar.component(.year, from: self)
     }
     
     /// Get current month
     var month: Int {
-        let calendar = Calendar.current
+        let calendar = getCurrentCalendarUTC()
         return calendar.component(.month, from: self)
     }
     
     /// Get current day
     var day: Int {
-        let calendar = Calendar.current
+        let calendar = getCurrentCalendarUTC()
         return calendar.component(.day, from: self)
     }
     
     /// Get current hour
     var hour: Int {
-        let calendar = Calendar.current
+        let calendar = getCurrentCalendarUTC()
         return calendar.component(.hour, from: self)
     }
     
     /// Get current minutes
     var minute: Int {
-        let calendar = Calendar.current
+        let calendar = getCurrentCalendarUTC()
         return calendar.component(.minute, from: self)
     }
     
@@ -62,7 +75,8 @@ public extension Date {
     ///
     /// - Returns: String date formated
     func add(years: Int) -> Date {
-        return Calendar(identifier: .gregorian).date(byAdding: .year, value: years, to: self)!
+        let calendar = getCurrentCalendarUTC()
+        return calendar.date(byAdding: .year, value: years, to: self)!
     }
     
     /// Add or substract months from date object
@@ -75,7 +89,8 @@ public extension Date {
     ///
     /// - Returns: String date formated
     func add(months: Int) -> Date {
-        return Calendar(identifier: .gregorian).date(byAdding: .month, value: months, to: self)!
+        let calendar = getCurrentCalendarUTC()
+        return calendar.date(byAdding: .month, value: months, to: self)!
     }
     
     /// Add or substract days from date object
@@ -88,7 +103,8 @@ public extension Date {
     ///
     /// - Returns: String date formated
     func add(days: Int) -> Date {
-        return Calendar(identifier: .gregorian).date(byAdding: .day, value: days, to: self)!
+        let calendar = getCurrentCalendarUTC()
+        return calendar.date(byAdding: .day, value: days, to: self)!
     }
     
     /// Add or substract hours from date object
@@ -101,7 +117,8 @@ public extension Date {
     ///
     /// - Returns: String date formated
     func add(hours: Int) -> Date {
-        return Calendar(identifier: .gregorian).date(byAdding: .hour, value: hours, to: self)!
+        let calendar = getCurrentCalendarUTC()
+        return calendar.date(byAdding: .hour, value: hours, to: self)!
     }
     
     /// Add or substract minutes from date object
@@ -114,7 +131,8 @@ public extension Date {
     ///
     /// - Returns: String date formated
     func add(minutes: Int) -> Date {
-        return Calendar(identifier: .gregorian).date(byAdding: .minute, value: minutes, to: self)!
+        let calendar = getCurrentCalendarUTC()
+        return calendar.date(byAdding: .minute, value: minutes, to: self)!
     }
         
     /// Convert a date to string with a specific format
@@ -124,6 +142,18 @@ public extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
+    }
+    
+    // MARK: private methods
+    fileprivate func getCurrentCalendarUTC() -> Calendar {
+        
+        var calendar = Calendar(identifier: .gregorian)
+        
+        if let timeZone = TimeZone(abbreviation: "UTC") {
+            calendar.timeZone = timeZone
+        }
+        
+        return calendar
     }
     
     /// Enum of the days of week
