@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         testArrayExtensions()
         testStringExtensions()
         testDateExtensions()
+        testCalendarExtensions()
         
         // test Utils
         testCustomLog()
@@ -143,16 +144,18 @@ class ViewController: UIViewController {
     /// method to test extensions of Date
     private func testDateExtensions() {
         
-        let date = Date()
+        let dateComponents = DateComponents(year: 2020, month: 2, day: 15)
+        var date = Calendar.currentUTC.date(from: dateComponents)!
+        
         let day: Date.WeekDays = .friday
         
         print("DATE EXTENSIONS")
         print("=================")
-        
+                
         print("Example date: \(date)")
         
         // test first day of current month
-        print("First day of current month: \(date.firstDayOfCurrentMonth)")
+        print("First day of month: \(date.firstDayOfMonth)")
         
         // test start of current day
         print("Start of day: \(date.startOfDay)")
@@ -161,10 +164,13 @@ class ViewController: UIViewController {
         print("End of day: \(date.endOfDay)")
         
         // test is first day of current month
-        print("Is first day of current month?: \(date.isFirstDayOfCurrentMonth)")
+        print("Is first day of month?: \(date.isFirstDayOfMonth)")
         
         // test last day of current month
-        print("Last day of current month: \(date.lastDayOfCurrentMonth)")
+        print("Last day of month: \(date.lastDayOfMonth)")
+        
+        date = Date()
+        print("Changing to current date: \(date)")
         
         // test year
         print("Year: \(date.year)")
@@ -209,11 +215,37 @@ class ViewController: UIViewController {
         newLine()
     }
     
+    private func testCalendarExtensions() {
+        
+        print("Calendar EXTENSIONS")
+        print("====================")
+        
+        // test get days of current year
+        print("Days of current year: \(Calendar.currentUTC.getDaysOfYear())")
+        
+        // test get days of specific year
+        print("Days of 2021 year: \(Calendar.currentUTC.getDaysOfYear(year: 2021))")
+        
+        // test get days of current month
+        print("Days of current month: \(Calendar.currentUTC.getDaysOfMonth())")
+        
+        // test get days of specific month
+        print("Days of first month: \(Calendar.currentUTC.getDaysOfMonth(month: 1))")
+        
+        // test first day of current month
+        print("First day of current month: \(Calendar.currentUTC.firstDayOfCurrentMonth)")
+        
+        // test last day of current month
+        print("Last day of current month: \(Calendar.currentUTC.lastDayOfCurrentMonth)")
+        
+        newLine()
+    }
+    
     /// method to test CustomLog
     private func testCustomLog() {
         
         print("CUSTOM LOG")
-        print("=================")
+        print("===========")
         
         CustomLog.log(type: .default, category: .default, item: "This is a default message")
         CustomLog.log(type: .info, category: .default, item: "This is a info message")

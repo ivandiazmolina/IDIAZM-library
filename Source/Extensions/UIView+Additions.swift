@@ -38,6 +38,7 @@ public extension UIView {
         addSubview(view)
     }
     
+    // MARK: VARS
     static var nib: UINib {
         let bundle = Bundle(for: self)
         return UINib(nibName: String(describing: self), bundle: bundle)

@@ -7,6 +7,8 @@
 
 public extension Calendar {
     
+    // MARK: VARS
+    
     /// Get the current calendar with UTC TimeZone
     static var currentUTC: Calendar {
         get {
@@ -20,12 +22,26 @@ public extension Calendar {
         }
     }
     
+    /// Get the first day of current month
+    var firstDayOfCurrentMonth: Date {
+        let calendar = Calendar.currentUTC
+        return calendar.date(from: Calendar.current.dateComponents([.year, .month], from: Date()))!
+    }
+    
+    /// Get the last day of current month
+    var lastDayOfCurrentMonth: Date {
+        let calendar = Calendar.currentUTC
+        return calendar.date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfCurrentMonth)!
+    }
+    
+    // MARK: Public methods
+    
     /// Get number of days in a specific year, if the year is not specified, the current year will be taken by default.
     ///
     /// - Parameter year: The year of which you want to calculate the days
     ///
     /// - Returns: The number of days in a specific year, otherwise 0
-    func getDaysOfYear(year: Int = 0, month: Int = 0) -> Int {
+    func getDaysOfYear(year: Int = 0) -> Int {
         
         var date: Date?
         

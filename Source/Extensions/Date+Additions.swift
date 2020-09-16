@@ -6,33 +6,35 @@
 //
 
 public extension Date {
-        
+    
+    /// Get the start of day
     var startOfDay: Date {
         let calendar = Calendar.currentUTC
         return calendar.startOfDay(for: self)
     }
-
+    
+    /// Get the end of day
     var endOfDay: Date {
         let calendar = Calendar.currentUTC
         return calendar.date(byAdding: DateComponents(day: -1, second: -1), to: startOfDay)!
     }
     
     
-    /// Get the first day of current month
-    var firstDayOfCurrentMonth: Date {
+    /// Get the first day of month
+    var firstDayOfMonth: Date {
         let calendar = Calendar.currentUTC
         return calendar.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
     }
     
-    /// Check if the day is the day of current month
-    var isFirstDayOfCurrentMonth: Bool {
-        return self == firstDayOfCurrentMonth
+    /// Check if the day is the day of month
+    var isFirstDayOfMonth: Bool {
+        return self == firstDayOfMonth
     }
     
-    /// Get the last day of current month
-    var lastDayOfCurrentMonth: Date {
+    /// Get the last day of month
+    var lastDayOfMonth: Date {
         let calendar = Calendar.currentUTC
-        return calendar.date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfCurrentMonth)!
+        return calendar.date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfMonth)!
     }
     
     /// Get current year
@@ -134,7 +136,7 @@ public extension Date {
         let calendar = Calendar.currentUTC
         return calendar.date(byAdding: .minute, value: minutes, to: self)!
     }
-        
+    
     /// Convert a date to string with a specific format
     ///
     /// - Returns: String date formated
