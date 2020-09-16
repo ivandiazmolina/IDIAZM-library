@@ -147,7 +147,7 @@ class ViewController: UIViewController {
         let dateComponents = DateComponents(year: 2020, month: 2, day: 15)
         var date = Calendar.currentUTC.date(from: dateComponents)!
         
-        let day: Date.WeekDays = .friday
+        let day: Calendar.WeekDays = .friday
         
         print("DATE EXTENSIONS")
         print("=================")
@@ -220,23 +220,43 @@ class ViewController: UIViewController {
         print("Calendar EXTENSIONS")
         print("====================")
         
+        let calendar = Calendar.currentUTC
+        
         // test get days of current year
-        print("Days of current year: \(Calendar.currentUTC.getDaysOfYear())")
+        print("Days of current year: \(calendar.getDaysOfYear())")
         
         // test get days of specific year
-        print("Days of 2021 year: \(Calendar.currentUTC.getDaysOfYear(year: 2021))")
+        print("Days of 2021 year: \(calendar.getDaysOfYear(year: 2021))")
         
         // test get days of current month
-        print("Days of current month: \(Calendar.currentUTC.getDaysOfMonth())")
+        print("Days of current month: \(calendar.getDaysOfMonth())")
         
         // test get days of specific month
-        print("Days of first month: \(Calendar.currentUTC.getDaysOfMonth(month: 1))")
+        print("Days of January: \(calendar.getDaysOfMonth(month: .january))")
+        
+        // test get days of specific month and year
+        print("Days of February of 2020: \(calendar.getDaysOfMonth(month: .february, year: 2020))")
         
         // test first day of current month
-        print("First day of current month: \(Calendar.currentUTC.firstDayOfCurrentMonth)")
+        print("First day of current month: \(calendar.firstDayOfCurrentMonth)")
         
         // test last day of current month
-        print("Last day of current month: \(Calendar.currentUTC.lastDayOfCurrentMonth)")
+        print("Last day of current month: \(calendar.lastDayOfCurrentMonth)")
+        
+        // test year
+        print("Year: \(calendar.year)")
+        
+        // test month
+        print("Month: \(calendar.month)")
+        
+        // test day
+        print("Day: \(calendar.day)")
+        
+        // test hour
+        print("Hour: \(calendar.hour)")
+        
+        // test minute
+        print("Minutes: \(calendar.minute)")
         
         newLine()
     }

@@ -145,39 +145,4 @@ public extension Date {
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
     }
-    
-    /// Enum of the days of week
-    enum WeekDays: Int {
-        
-        case sunday = 0, monday, tuesday, wednesday, thursday, friday, saturday
-        
-        private func dateFormatter() -> DateFormatter {
-            let dateFormatter = DateFormatter()
-            return dateFormatter
-        }
-        
-        /// Get the short symbol of day
-        ///
-        /// Usage:
-        ///
-        ///     let day: Date.WeekDays = .friday
-        ///     day.getShortWeekdaySymbols() // result -> Fri
-        ///
-        /// - Returns: String with the short format of day
-        public func getVeryShortWeekdaySymbols() -> String? {
-            return dateFormatter().veryShortWeekdaySymbols.getElement(self.rawValue)
-        }
-        
-        /// Get the short symbol of day
-        ///
-        /// Usage:
-        ///
-        ///     let day: Date.WeekDays = .friday
-        ///     day.getShortWeekdaySymbols() // result -> F
-        ///
-        /// - Returns: String with the short format of day
-        public func getShortWeekdaySymbols() -> String? {
-            return dateFormatter().shortWeekdaySymbols.getElement(self.rawValue)
-        }
-    }
 }
