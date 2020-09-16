@@ -29,8 +29,6 @@ assignees: ''
 **IDIAZM version:**
 **Xcode version:**
 **Swift version:**
-**Platform(s) running Alamofire:**
-**macOS version running Xcode:**
 
 ## Demo Project
 
