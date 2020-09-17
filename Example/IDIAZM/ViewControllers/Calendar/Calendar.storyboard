@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qqz-Ta-XMX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Calendar View Controller-->
+        <scene sceneID="RYl-VQ-NEt">
+            <objects>
+                <viewController id="Qqz-Ta-XMX" customClass="CalendarViewController" customModule="IDIAZM_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f4U-Z4-xHp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upk-y4-NXE">
+                                <rect key="frame" x="8" y="60" width="398" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xUn-1f-mNa" customClass="SmallCalendarView" customModule="IDIAZM">
+                                <rect key="frame" x="0.0" y="88.5" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="saW-oi-yhK"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5P-Yk-zJn">
+                                <rect key="frame" x="8" y="180.5" width="414" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyq-ub-HTD" customClass="SmallCalendarView" customModule="IDIAZM">
+                                <rect key="frame" x="0.0" y="209" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="j7f-gN-Xd6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xUn-1f-mNa" firstAttribute="trailing" secondItem="vgL-bp-nMA" secondAttribute="trailing" id="703-LN-EUd"/>
+                            <constraint firstItem="xUn-1f-mNa" firstAttribute="top" secondItem="upk-y4-NXE" secondAttribute="bottom" constant="8" symbolic="YES" id="Bp1-Q5-qlF"/>
+                            <constraint firstItem="xyq-ub-HTD" firstAttribute="leading" secondItem="vgL-bp-nMA" secondAttribute="leading" id="Ir8-wl-AlT"/>
+                            <constraint firstItem="upk-y4-NXE" firstAttribute="leading" secondItem="vgL-bp-nMA" secondAttribute="leading" constant="8" id="Jej-q2-orI"/>
+                            <constraint firstItem="upk-y4-NXE" firstAttribute="top" secondItem="vgL-bp-nMA" secondAttribute="top" constant="16" id="LFc-lz-trc"/>
+                            <constraint firstItem="Q5P-Yk-zJn" firstAttribute="leading" secondItem="vgL-bp-nMA" secondAttribute="leading" constant="8" id="PLA-TU-Xor"/>
+                            <constraint firstItem="Q5P-Yk-zJn" firstAttribute="top" secondItem="xUn-1f-mNa" secondAttribute="bottom" constant="32" id="YZg-py-FlW"/>
+                            <constraint firstItem="Q5P-Yk-zJn" firstAttribute="trailing" secondItem="vgL-bp-nMA" secondAttribute="trailing" constant="8" id="aLl-Gq-CVK"/>
+                            <constraint firstItem="vgL-bp-nMA" firstAttribute="trailing" secondItem="xyq-ub-HTD" secondAttribute="trailing" constant="20" symbolic="YES" id="bWg-7b-vGI"/>
+                            <constraint firstItem="xyq-ub-HTD" firstAttribute="top" secondItem="Q5P-Yk-zJn" secondAttribute="bottom" constant="8" symbolic="YES" id="elX-Ud-SNw"/>
+                            <constraint firstItem="xUn-1f-mNa" firstAttribute="leading" secondItem="vgL-bp-nMA" secondAttribute="leading" id="orF-JR-4yP"/>
+                            <constraint firstAttribute="trailing" secondItem="upk-y4-NXE" secondAttribute="trailing" constant="8" id="xwp-rM-oFB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vgL-bp-nMA"/>
+                    </view>
+                    <connections>
+                        <outlet property="americanCalendar" destination="xyq-ub-HTD" id="if4-wj-eTO"/>
+                        <outlet property="americanLabel" destination="Q5P-Yk-zJn" id="gTh-pT-rCB"/>
+                        <outlet property="spanishCalendar" destination="xUn-1f-mNa" id="toI-j6-GYX"/>
+                        <outlet property="spanishLabel" destination="upk-y4-NXE" id="hO1-xa-dH5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c3T-iB-hUc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-343" y="-252"/>
+        </scene>
+    </scenes>
+</document>

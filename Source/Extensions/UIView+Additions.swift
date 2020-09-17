@@ -23,15 +23,15 @@ public extension UIView {
     ///         //MARK: - Initializers
     ///         override init(frame: CGRect) {
     ///             super.init(frame: frame)
-    ///             xibSetup()
+    ///             setupXib()
     ///         }
     ///
     ///         required init?(coder aDecoder: NSCoder) {
     ///             super.init(coder: aDecoder)
-    ///             xibSetup()
+    ///             setupXib()
     ///         }
     ///
-    func xibSetup() {
+    func setupXib() {
         let view = loadViewFromNib()
         view.frame = bounds
         view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmallCalendarView" customModule="Cacti" customModuleProvider="target">
+            <connections>
+                <outlet property="numberDaysCollectionView" destination="bcs-Mj-zN8" id="vg9-cn-kkM"/>
+                <outlet property="weekDaysStackView" destination="Ew9-Ai-Eo3" id="J8B-EJ-S0N"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="okS-JY-JCr">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KVF-Gs-z1w">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ew9-Ai-Eo3" userLabel="weekDays">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                        </stackView>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bcs-Mj-zN8" userLabel="numberDays">
+                            <rect key="frame" x="0.0" y="43" width="375" height="43"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QmX-IY-gJb">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="0.3379173801" colorSpace="custom" customColorSpace="sRGB"/>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="KVF-Gs-z1w" firstAttribute="leading" secondItem="oyd-iE-vrF" secondAttribute="leading" id="QMh-O6-F6H"/>
+                <constraint firstItem="oyd-iE-vrF" firstAttribute="bottom" secondItem="KVF-Gs-z1w" secondAttribute="bottom" id="d07-VV-vfo"/>
+                <constraint firstItem="oyd-iE-vrF" firstAttribute="trailing" secondItem="KVF-Gs-z1w" secondAttribute="trailing" id="lij-zG-oUH"/>
+                <constraint firstItem="KVF-Gs-z1w" firstAttribute="top" secondItem="oyd-iE-vrF" secondAttribute="top" id="wHs-Tt-6Hf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="oyd-iE-vrF"/>
+            <point key="canvasLocation" x="-150" y="-296"/>
+        </view>
+    </objects>
+</document>
