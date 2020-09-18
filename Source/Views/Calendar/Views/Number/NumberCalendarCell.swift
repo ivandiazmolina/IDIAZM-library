@@ -20,4 +20,19 @@ open class NumberCalendarCell: UICollectionViewCell {
     fileprivate func setupView() {
         numberLabel.text = ""
     }
+    
+    /// Update UI of cell
+    /// - Parameter date: date
+    func updateUI(date: Date) {
+        
+        // text
+        numberLabel.text = String(describing: date.day)
+        
+        // text color
+        if Calendar.currentUTC.day == date.day {
+            numberLabel.textColor = .red
+        } else {
+            numberLabel.textColor = Calendar.currentUTC.month == date.month ? .black : .gray
+        }
+    }
 }

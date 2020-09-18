@@ -20,7 +20,7 @@ open class SmallCalendarView: UIView {
     private let SECTION_INSETS = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     
     // MARK: VARS
-    private var elements: [Int] = []
+    private var elements: [Date] = []
     open var isAmericanCalendar: Bool = Calendar.currentUTC.firstWeekday == 1 {
         didSet {
             setupView()
@@ -148,7 +148,7 @@ open class SmallCalendarView: UIView {
         var diff = weekDayFirstDay - firstWeekDay
         for index in 1...diff {
             let beforeDay = firstDay.add(days: -(index))
-            elements.append(beforeDay.day)
+            elements.append(beforeDay)
         }
         
         // reverse the elements of array
@@ -156,8 +156,8 @@ open class SmallCalendarView: UIView {
         
         // calculate days of month
         let totalDaysOfMonth = Calendar.currentUTC.getDaysOfMonth()
-        for i in 1...totalDaysOfMonth {
-            elements.append(i)
+        for i in 0...totalDaysOfMonth - 1 {
+            elements.append(firstDay.add(days: i))
         }
                 
         // calculate future days of month
@@ -165,7 +165,7 @@ open class SmallCalendarView: UIView {
         if diff > 0 {
             for index in 1...diff {
                 let afterDay = lastDay.add(days: index)
-                elements.append(afterDay.day)
+                elements.append(afterDay)
             }
         }
         
@@ -190,11 +190,13 @@ extension SmallCalendarView: UICollectionViewDelegate, UICollectionViewDataSourc
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NumberCalendarCell.identifier, for: indexPath) as? NumberCalendarCell else { return UICollectionViewCell()}
-        
-        if let number = elements.getElement(indexPath.row) {
-            cell.numberLabel.text = String(describing: number)
-        }
                 
+        // check if exists element on array
+        if let date = elements.getElement(indexPath.row) {
+            cell.updateUI(date: date)
+        }
+        
+        // return cell
         return cell
     }
 }
