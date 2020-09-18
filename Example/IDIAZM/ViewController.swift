@@ -148,7 +148,8 @@ class ViewController: UIViewController {
         var date = Calendar.currentUTC.date(from: dateComponents)!
         
         let day: Calendar.WeekDays = .friday
-        
+        let month: Calendar.Months = .current
+                
         print("DATE EXTENSIONS")
         print("=================")
                 
@@ -211,6 +212,12 @@ class ViewController: UIViewController {
         print("Short weekday: \(String(describing: day.getShortWeekdaySymbols()))")
         
         print("Very short weekday: \(String(describing: day.getVeryShortWeekdaySymbols()))")
+        
+        print("Example month: \(month)")
+        
+        print("Short month: \(String(describing: month.getShortMonthSymbols()))")
+        
+        print("Very short month: \(String(describing: month.getVeryShortMonthSymbols()))")
         
         newLine()
     }

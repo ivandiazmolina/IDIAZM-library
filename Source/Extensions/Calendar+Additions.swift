@@ -11,8 +11,68 @@ public extension Calendar {
     
     /// Enum of the days of week
 
-    enum Months: Int {
+    enum Months: Int, CustomStringConvertible, CustomReflectable {
+                
         case current = 0, january, february, march, april, may, june, july, august, september, october, november, december
+        
+        // MARK: Public methods
+        
+        /// Get the symbol of month
+        ///
+        /// Usage:
+        ///
+        ///     let month: Date.Months = .january
+        ///     month.getMonthSymbols() // result -> January
+        ///
+        /// - Returns: String with the short format of month
+        public func getMonthSymbols() -> String? {
+            return DateFormatter().monthSymbols.getElement(indexOfElements)
+        }
+        
+        /// Get the short symbol of month
+        ///
+        /// Usage:
+        ///
+        ///     let month: Date.Months = .january
+        ///     month.getShortWeekdaySymbols() // result -> Jan
+        ///
+        /// - Returns: String with the short format of month
+        public func getShortMonthSymbols() -> String? {
+            return DateFormatter().shortMonthSymbols.getElement(indexOfElements)
+        }
+        
+        /// Get the very short symbol of month
+        ///
+        /// Usage:
+        ///
+        ///     let month: Date.WeekDays = .january
+        ///     month.getVeryShortMonthSymbols() // result -> J
+        ///
+        /// - Returns: String with the short format of day
+        public func getVeryShortMonthSymbols() -> String? {
+            return DateFormatter().veryShortMonthSymbols.getElement(indexOfElements)
+        }
+        
+        // MARK: Private methods
+        
+        /// Get the correct index of element
+        var indexOfElements: Int {
+            
+            // get index switch rawValue
+            let index = rawValue > 0 ? rawValue : Date().month
+            
+            // return the correct index minus 1 in order to be equals to array of DateFormatter()
+            return index - 1
+        }
+        
+        // MARK: description
+        public var description: String {
+            return DateFormatter().monthSymbols.getElement(indexOfElements) ?? ""
+        }
+        
+        public var customMirror: Mirror {
+            return Mirror(reflecting: description)
+        }
     }
     
     /// Enum of the days of week
@@ -20,10 +80,7 @@ public extension Calendar {
         
         case sunday = 0, monday, tuesday, wednesday, thursday, friday, saturday
         
-        private func dateFormatter() -> DateFormatter {
-            let dateFormatter = DateFormatter()
-            return dateFormatter
-        }
+        // MARK: Public methods
         
         /// Get the short symbol of day
         ///
@@ -33,20 +90,20 @@ public extension Calendar {
         ///     day.getShortWeekdaySymbols() // result -> Fri
         ///
         /// - Returns: String with the short format of day
-        public func getVeryShortWeekdaySymbols() -> String? {
-            return dateFormatter().veryShortWeekdaySymbols.getElement(self.rawValue)
+        public func getShortWeekdaySymbols() -> String? {
+            return DateFormatter().shortWeekdaySymbols.getElement(self.rawValue)
         }
         
-        /// Get the short symbol of day
+        /// Get the very short symbol of day
         ///
         /// Usage:
         ///
         ///     let day: Date.WeekDays = .friday
-        ///     day.getShortWeekdaySymbols() // result -> F
+        ///     day.getVeryShortWeekdaySymbols() // result -> F
         ///
         /// - Returns: String with the short format of day
-        public func getShortWeekdaySymbols() -> String? {
-            return dateFormatter().shortWeekdaySymbols.getElement(self.rawValue)
+        public func getVeryShortWeekdaySymbols() -> String? {
+            return DateFormatter().veryShortWeekdaySymbols.getElement(self.rawValue)
         }
     }
     
@@ -138,9 +195,7 @@ public extension Calendar {
     /// 
     /// - Returns: The number of days in a specific month, otherwise 0
     func getDaysOfMonth(month: Months = .current, year: Int = 0) -> Int {
-        
-        //case sunday = 0, monday, tuesday, wednesday, thursday, friday, saturday
-        
+                
         var date: Date?
         
         // Specify the months to Date

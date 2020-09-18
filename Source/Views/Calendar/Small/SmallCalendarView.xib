@@ -2,13 +2,15 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmallCalendarView" customModule="Cacti" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmallCalendarView" customModule="IDIAZM" customModuleProvider="target">
             <connections>
+                <outlet property="monthLabel" destination="hz2-rU-sVM" id="7ch-8M-q79"/>
                 <outlet property="numberDaysCollectionView" destination="bcs-Mj-zN8" id="vg9-cn-kkM"/>
                 <outlet property="weekDaysStackView" destination="Ew9-Ai-Eo3" id="J8B-EJ-S0N"/>
             </connections>
@@ -21,11 +23,27 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KVF-Gs-z1w">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zza-Zw-MLl">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="28.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hz2-rU-sVM">
+                                    <rect key="frame" x="166.5" y="4" width="42" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="hz2-rU-sVM" firstAttribute="centerX" secondItem="zza-Zw-MLl" secondAttribute="centerX" id="H0T-0O-XyO"/>
+                                <constraint firstItem="hz2-rU-sVM" firstAttribute="centerY" secondItem="zza-Zw-MLl" secondAttribute="centerY" id="s63-aF-mhU"/>
+                            </constraints>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ew9-Ai-Eo3" userLabel="weekDays">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                            <rect key="frame" x="0.0" y="28.5" width="375" height="29"/>
                         </stackView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bcs-Mj-zN8" userLabel="numberDays">
-                            <rect key="frame" x="0.0" y="43" width="375" height="43"/>
+                            <rect key="frame" x="0.0" y="57.5" width="375" height="28.5"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QmX-IY-gJb">
                                 <size key="itemSize" width="50" height="50"/>

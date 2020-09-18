@@ -13,6 +13,7 @@ open class SmallCalendarView: UIView {
     // MARK: IBOutlets
     @IBOutlet weak var weekDaysStackView: UIStackView!
     @IBOutlet weak var numberDaysCollectionView: UICollectionView!
+    @IBOutlet weak var monthLabel: UILabel!
     
     // MARK: LETS
     private let ITEMS_BY_ROW: CGFloat = 7
@@ -44,6 +45,9 @@ open class SmallCalendarView: UIView {
     /// Setup View
     fileprivate func setupView() {
         
+        // Setup Months
+        setupMonths()
+        
         // Setup Week Days
         setupWeekDays()
         
@@ -55,6 +59,11 @@ open class SmallCalendarView: UIView {
         
         // Calculate days for calendar
         calculateDays()
+    }
+    
+    /// Setup the Months 
+    fileprivate func setupMonths() {
+        monthLabel.text = getMonthName()
     }
     
     /// Setup the StackView component which contains the days of week
@@ -146,7 +155,7 @@ open class SmallCalendarView: UIView {
         elements.reverse()
         
         // calculate days of month
-        let totalDaysOfMonth = Calendar.currentUTC.getDaysOfMonth(month: .september)
+        let totalDaysOfMonth = Calendar.currentUTC.getDaysOfMonth()
         for i in 1...totalDaysOfMonth {
             elements.append(i)
         }
@@ -162,6 +171,12 @@ open class SmallCalendarView: UIView {
         
         // reload collectionView
         numberDaysCollectionView.reloadData()
+    }
+    
+    /// Get the String of the month parameter
+    /// - Parameter month: month of which you want its name
+    fileprivate func getMonthName(month: Calendar.Months = .current) -> String {
+        return month.description
     }
 }
 
