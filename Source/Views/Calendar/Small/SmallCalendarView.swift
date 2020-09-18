@@ -27,7 +27,9 @@ open class SmallCalendarView: UIView {
         }
     }
     
-    //MARK: - Initializers
+    private var selectedDay: Date = Date()
+    
+    // MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupXib()
@@ -39,6 +41,17 @@ open class SmallCalendarView: UIView {
         setupXib()
         setupView()
     }
+    
+    // MARK: Gestures
+    
+    @IBAction func onBackTap(_ sender: UIButton) {
+        print("Back tapped")
+    }
+    
+    @IBAction func onNextTap(_ sender: UIButton) {
+        print("Next tapped")
+    }
+    
     
     // MARK: Private methods
     

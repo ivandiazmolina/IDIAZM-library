@@ -26,16 +26,44 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zza-Zw-MLl">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="28.5"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5V-9Y-59l">
+                                    <rect key="frame" x="120.5" y="-0.5" width="46" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="46" id="bvn-7M-vYs"/>
+                                    </constraints>
+                                    <state key="normal" title="&lt;">
+                                        <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onBackTap:" destination="-1" eventType="touchUpInside" id="icM-jG-Zwd"/>
+                                    </connections>
+                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hz2-rU-sVM">
                                     <rect key="frame" x="166.5" y="4" width="42" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ej0-tw-fqt">
+                                    <rect key="frame" x="208.5" y="-0.5" width="46" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="46" id="l4U-nf-aTS"/>
+                                    </constraints>
+                                    <state key="normal" title="&gt;">
+                                        <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onNextTap:" destination="-1" eventType="touchUpInside" id="PI3-sh-7X8"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="hz2-rU-sVM" firstAttribute="centerX" secondItem="zza-Zw-MLl" secondAttribute="centerX" id="H0T-0O-XyO"/>
+                                <constraint firstItem="ej0-tw-fqt" firstAttribute="centerY" secondItem="zza-Zw-MLl" secondAttribute="centerY" id="aRf-d4-thz"/>
+                                <constraint firstItem="ej0-tw-fqt" firstAttribute="leading" secondItem="hz2-rU-sVM" secondAttribute="trailing" id="bci-UW-Qki"/>
+                                <constraint firstItem="b5V-9Y-59l" firstAttribute="trailing" secondItem="hz2-rU-sVM" secondAttribute="leading" id="cwL-Um-BWT"/>
+                                <constraint firstItem="b5V-9Y-59l" firstAttribute="centerY" secondItem="zza-Zw-MLl" secondAttribute="centerY" id="lss-xr-04B"/>
                                 <constraint firstItem="hz2-rU-sVM" firstAttribute="centerY" secondItem="zza-Zw-MLl" secondAttribute="centerY" id="s63-aF-mhU"/>
                             </constraints>
                         </view>
