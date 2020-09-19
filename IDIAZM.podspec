@@ -14,10 +14,9 @@ Pod::Spec.new do |s|
   s.license               = 'MIT'
   s.author                = { 'ivandiazmolina' => 'ivandiazmolina92@gmail.com' }
   s.source                = { :git => 'https://github.com/ivandiazmolina/IDIAZM-library.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   s.swift_versions        = ['5.0']
   s.ios.deployment_target = '11.0'
-  s.source_files          = 'Source/**/*.swift'
-  s.resources 		 = "Source/**/*.xib"
-  s.resource_bundles 	 = { 'IDIAZM' => [ 'Pod/**/*.xib' ] }
+  s.source_files          = 'Source/**/*.{swift,xib}'
+  #s.resource 		 = 'Source/Views/*.xib'
+  #s.resource_bundles 	 = { 'IDIAZM' => [ 'Pod/Source/**/*.xib' ] }
 end
