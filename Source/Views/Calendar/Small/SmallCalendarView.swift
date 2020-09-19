@@ -27,7 +27,9 @@ open class SmallCalendarView: UIView {
         }
     }
     
+    private let calendar = Calendar.currentUTC
     private var selectedDay: Date = Date()
+    private var itemWidth: CGFloat = 0
     
     // MARK: Initializers
     override init(frame: CGRect) {
@@ -72,6 +74,13 @@ open class SmallCalendarView: UIView {
         
         // Calculate days for calendar
         calculateDays()
+        
+        // TEST ANIMATION
+//        let dateComponents = DateComponents(year: 2020, month: 9, day: 1)
+//        var mDate = Calendar.currentUTC.date(from: dateComponents)!
+        
+        // Animate to current day
+        animationToDay(date: Date(), animated: false)
     }
     
     /// Setup the Months 
@@ -140,9 +149,6 @@ open class SmallCalendarView: UIView {
     /// Calculate the days to show in calendar view
     fileprivate func calculateDays() {
         
-        // get the current calendar
-        let calendar = Calendar.currentUTC
-        
         // get the first and last day of current month
         let firstDay = calendar.firstDayOfCurrentMonth
         let lastDay = calendar.lastDayOfCurrentMonth
@@ -174,7 +180,7 @@ open class SmallCalendarView: UIView {
         }
                 
         // calculate future days of month
-        diff = 7 - (isAmericanCalendar ? weekDayLastDay : weekDayLastDay - 1)
+        diff = 7 - (isAmericanCalendar ? weekDayLastDay : weekDayLastDay - 1) // 7 = 7 days
         if diff > 0 {
             for index in 1...diff {
                 let afterDay = lastDay.add(days: index)
@@ -190,6 +196,24 @@ open class SmallCalendarView: UIView {
     /// - Parameter month: month of which you want its name
     fileprivate func getMonthName(month: Calendar.Months = .current) -> String {
         return month.description
+    }
+    
+    /// Scroll Collectionview to specific day with optional animation
+    /// - Parameters:
+    ///   - date: date that you wish to navigate
+    ///   - animated: animation
+    fileprivate func animationToDay(date: Date, animated: Bool) {
+        
+        // get weekMonth of date
+        var weekMonth = calendar.component(.weekOfMonth, from: date)
+        
+        // minus 1 to weekMonth, because if weekMonth = 1, not need scroll
+        weekMonth -= 1
+        
+        // init the animation
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.numberDaysCollectionView.setContentOffset(CGPoint(x: UIScreen.main.bounds.width * CGFloat(weekMonth), y: 0), animated: animated)
+        }
     }
 }
 
@@ -225,8 +249,8 @@ extension SmallCalendarView: UICollectionViewDelegateFlowLayout {
         // get the available width of the screen
         let availableWidth = UIScreen.main.bounds.width - padding
         
-        // calculate the width of the item
-        let itemWidth = availableWidth / ITEMS_BY_ROW
+        // calculate the width of the item and save it
+        itemWidth = availableWidth / ITEMS_BY_ROW
         
         // return item size
         return CGSize(width: itemWidth, height: collectionView.frame.height)
