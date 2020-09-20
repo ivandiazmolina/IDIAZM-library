@@ -113,8 +113,9 @@ open class SmallCalendarView: UIView {
         calculateDays()
         
         // TEST ANIMATION
-//        let dateComponents = DateComponents(year: 2020, month: 9, day: 20)
+//        let dateComponents = DateComponents(year: 2020, month: 9, day: 1)
 //        var mDate = Calendar.currentUTC.date(from: dateComponents)!
+//        animationToDay(date: mDate, animated: false)
         
         // Animate to current day
         animationToDay(date: data.selectedDate, animated: false)
@@ -195,7 +196,7 @@ open class SmallCalendarView: UIView {
         elements = []
         
         // get the firstWeekDay switch calendar type
-        let firstWeekDay = isAmericanCalendar ? 1 : 2
+        let firstWeekDay = getFirstWeekDay()
         
         // get the weekDays of first and last day of calendar
         let weekDayFirstDay = calendar.component(.weekday, from: firstDay)
@@ -235,14 +236,17 @@ open class SmallCalendarView: UIView {
     ///   - date: date that you wish to navigate
     ///   - animated: animation
     fileprivate func animationToDay(date: Date, animated: Bool) {
-        
-        // FIXME: 20 september 2020 error EEUU vs Spain
-        
+                
         // get weekMonth of date
         var weekMonth = calendar.component(.weekOfMonth, from: date)
+                
+        // minus 1 or 2 to weekMonth, because if weekMonth = 1, not need scroll
+        weekMonth -= getFirstWeekDay()
         
-        // minus 1 to weekMonth, because if weekMonth = 1, not need scroll
-        weekMonth -= 1
+        // if the value is less than 0, it means that you have not to scroll, so initialize it to 0
+        if weekMonth < 0 {
+            weekMonth = 0
+        }
         
         // init the animation
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -259,6 +263,12 @@ open class SmallCalendarView: UIView {
     /// Reload the collection view in order to updates cells
     fileprivate func reloadData() {
         numberDaysCollectionView.reloadData()
+    }
+    
+    /// get the first day of the week according to the calendar
+    /// - Returns: 1 if is American, otherwhise 2
+    fileprivate func getFirstWeekDay() -> Int {
+        return isAmericanCalendar ? 1 : 2
     }
 }
 

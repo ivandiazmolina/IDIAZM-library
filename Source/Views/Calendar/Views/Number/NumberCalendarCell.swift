@@ -30,7 +30,7 @@ open class NumberCalendarCell: UICollectionViewCell {
     /// - Parameter date: date
     func updateUI(date: Date, data: CalendarData) {
         
-//        setNeedsLayout()
+        setNeedsLayout()
         layoutIfNeeded()
         
         // text

@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     
     private func setupView() {
         
+        self.title = "Views"
+        
         // setup TableView
         setupTableView()
         
