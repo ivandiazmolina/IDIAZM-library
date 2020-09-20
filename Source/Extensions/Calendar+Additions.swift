@@ -17,7 +17,7 @@ public extension Calendar {
         
         // MARK: Public methods
         
-        /// Get the symbol of month
+        /// Gets the symbol of month
         ///
         /// Usage:
         ///
@@ -29,7 +29,7 @@ public extension Calendar {
             return DateFormatter().monthSymbols.getElement(indexOfElements)
         }
         
-        /// Get the short symbol of month
+        /// Gets the short symbol of month
         ///
         /// Usage:
         ///
@@ -55,11 +55,11 @@ public extension Calendar {
         
         // MARK: Private methods
         
-        /// Get the correct index of element
+        /// Gets the correct index of element
         var indexOfElements: Int {
             
             // get index switch rawValue
-            let index = rawValue > 0 ? rawValue : Date().month
+            let index = rawValue > 0 ? rawValue : Calendar.currentUTC.month
             
             // return the correct index minus 1 in order to be equals to array of DateFormatter()
             return index - 1
@@ -82,7 +82,7 @@ public extension Calendar {
         
         // MARK: Public methods
         
-        /// Get the short symbol of day
+        /// Gets the short symbol of day
         ///
         /// Usage:
         ///
@@ -94,7 +94,7 @@ public extension Calendar {
             return DateFormatter().shortWeekdaySymbols.getElement(self.rawValue)
         }
         
-        /// Get the very short symbol of day
+        /// Gets the very short symbol of day
         ///
         /// Usage:
         ///
@@ -109,7 +109,7 @@ public extension Calendar {
     
     // MARK: VARS
     
-    /// Get the current calendar with UTC TimeZone
+    /// Gets the current calendar with UTC TimeZone
     static var currentUTC: Calendar {
         get {
             var calendar = Calendar(identifier: .gregorian)
@@ -123,46 +123,51 @@ public extension Calendar {
         }
     }
     
-    /// Get the first day of current month
+    /// Gets the first day of current month
     var firstDayOfCurrentMonth: Date {
         let calendar = Calendar.currentUTC
         return calendar.date(from: Calendar.current.dateComponents([.year, .month], from: Date()))!
     }
     
-    /// Get the last day of current month
+    /// Gets the last day of current month
     var lastDayOfCurrentMonth: Date {
         let calendar = Calendar.currentUTC
         return calendar.date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfCurrentMonth)!
     }
     
-    /// Get current year
+    /// Gets current year
     var year: Int {
         return Date().year
     }
     
-    /// Get current month
+    /// Gets current month
     var month: Int {
         return Date().month
     }
     
-    /// Get current day
+    /// Gets current day
     var day: Int {
         return Date().day
     }
     
-    /// Get current hour
+    /// Gets current hour
     var hour: Int {
         return Date().hour
     }
     
-    /// Get current minutes
+    /// Gets current minutes
     var minute: Int {
         return Date().minute
     }
     
+    /// Gets current minutes
+    var today: Date {
+        return Date()
+    }
+    
     // MARK: Public methods
     
-    /// Get number of days in a specific year, if the year is not specified, the current year will be taken by default.
+    /// Gets number of days in a specific year, if the year is not specified, the current year will be taken by default.
     ///
     /// - Parameter year: The year of which you want to calculate the days
     ///
@@ -173,7 +178,7 @@ public extension Calendar {
         
         // Specify the year to Date
         var dateComponents = DateComponents()
-        dateComponents.year = year == 0 ? Date().year : year
+        dateComponents.year = year == 0 ? Calendar.currentUTC.year : year
         
         // Create date object
         date = self.date(from: dateComponents)
@@ -188,7 +193,7 @@ public extension Calendar {
         return days
     }
     
-    /// Get number of days in a specific month, if the month/year is not specified, the month/year will be the current.
+    /// Gets number of days in a specific month, if the month/year is not specified, the month/year will be the current.
     ///
     /// - Parameter month: The month of which you want to calculate the days
     /// - Parameter year: The year of which you want to calculate the days
@@ -200,8 +205,8 @@ public extension Calendar {
         
         // Specify the months to Date
         var dateComponents = DateComponents()
-        dateComponents.year = year == 0 ? Date().year : year
-        dateComponents.month = month == .current ? Date().month : month.rawValue
+        dateComponents.year = year == 0 ? Calendar.currentUTC.year : year
+        dateComponents.month = month == .current ? Calendar.currentUTC.month : month.rawValue
         
         // Create date object
         date = self.date(from: dateComponents)
@@ -214,5 +219,22 @@ public extension Calendar {
         }
                 
         return days
+    }
+    
+    /// Gets a specific date
+    /// - Parameters:
+    ///   - year: year
+    ///   - month: month
+    ///   - day: day
+    /// - Returns: Date object
+    func getDate(year: Int, month: Int, day: Int = 1) -> Date? {
+        return date(from: DateComponents(year: year, month: month, day: day))
+    }
+    
+    /// Checks if 2 dates are equals
+    /// - Parameter date: date in order to compare
+    /// - Returns: true if are equals, otherwhise false
+    func isSameDate(date: Date) -> Bool {
+        return date.year == self.year && date.month == self.month && date.day == self.day
     }
 }

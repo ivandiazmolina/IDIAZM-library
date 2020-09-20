@@ -16,14 +16,18 @@ open class SmallCalendarView: UIView {
     @IBOutlet weak var monthLabel: UILabel!
     
     // MARK: LETS
-    private let ITEMS_BY_ROW: CGFloat = 7
+    private let ITEMS_BY_ROW: CGFloat = 7 // 7 days
     private let SECTION_INSETS = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+    private let DIFF_YEARS = 5
     
     // MARK: VARS
     private var elements: [Date] = []
     private var itemWidth: CGFloat = 0
     private let calendar = Calendar.currentUTC
     private var data = CalendarData()
+    
+    private var startDate: Date = Date()
+    private var endDate: Date = Date()
     
     open weak var delegate: CalendarDelegate?
     open var isAmericanCalendar: Bool = Calendar.currentUTC.firstWeekday == 1 {
@@ -86,7 +90,9 @@ open class SmallCalendarView: UIView {
         monthLabel.text = "\(month.description) \(date.year)"
         
         // update data struct
-        updateData(data: CalendarData(selectedDate: date))
+        var newData = data
+        newData.selectedDate = date
+        updateData(data: newData)
         
         print("Date on Calendar: \(data.selectedDate)")
     }
@@ -109,13 +115,16 @@ open class SmallCalendarView: UIView {
         // Create Week Days
         createWeekDays()
         
+        // Setup Calendar Range
+        //        setupCalendarRange()
+        
         // Calculate days for calendar
         calculateDays()
         
         // TEST ANIMATION
-//        let dateComponents = DateComponents(year: 2020, month: 9, day: 1)
-//        var mDate = Calendar.currentUTC.date(from: dateComponents)!
-//        animationToDay(date: mDate, animated: false)
+        //        let dateComponents = DateComponents(year: 2020, month: 9, day: 1)
+        //        var mDate = Calendar.currentUTC.date(from: dateComponents)!
+        //        animationToDay(date: mDate, animated: false)
         
         // Animate to current day
         animationToDay(date: data.selectedDate, animated: false)
@@ -155,7 +164,7 @@ open class SmallCalendarView: UIView {
         
         // clear the current headers
         clearWeekDays()
-                
+        
         var days: [Calendar.WeekDays] = [.sunday,.monday, .tuesday, .wednesday, .thursday, .friday, .saturday]
         
         // switch var 'isAmericanCalendar', the header will change his order
@@ -183,6 +192,31 @@ open class SmallCalendarView: UIView {
             weekDaysStackView.removeArrangedSubview(tmp)
             tmp.removeFromSuperview()
         }
+    }
+    
+    fileprivate func setupCalendarRange() {
+        
+        //        startDate = calendar.getDate(year: calendar.year - DIFF_YEARS, month: 01, day: 1) ?? Date()
+        //        endDate = Calendar.currentUTC.getDate(year: calendar.year + DIFF_YEARS, month: 12, day: 31) ?? Date()
+        
+        startDate = calendar.getDate(year: calendar.year, month: 8, day: 1) ?? Date()
+        endDate = Calendar.currentUTC.getDate(year: calendar.year, month: 10, day: 31) ?? Date()
+        
+        let months = calendar.dateComponents([.month], from: startDate, to: endDate).month ?? 1
+        
+        var range: [CalendarRange] = []
+        
+        for d in 0...months {
+            
+            let date = calendar.date(byAdding: .month, value: (d), to: startDate)!
+            let components = Calendar.current.dateComponents([.month, .year], from: date)
+            
+            range.append(CalendarRange(month: components.month!, year: components.year!, daysInMonth: date.daysOfMonth))
+        }
+        
+        var newData = data
+        newData.range = range
+        updateData(data: newData)
     }
     
     /// Calculate the days to show in calendar view
@@ -217,9 +251,9 @@ open class SmallCalendarView: UIView {
         for i in 0...totalDaysOfMonth - 1 {
             elements.append(firstDay.add(days: i))
         }
-                
+        
         // calculate future days of month
-        diff = 7 - (isAmericanCalendar ? weekDayLastDay : weekDayLastDay - 1) // 7 = 7 days
+        diff = Int(ITEMS_BY_ROW) - (isAmericanCalendar ? weekDayLastDay : weekDayLastDay - 1)
         if diff > 0 {
             for index in 1...diff {
                 let afterDay = lastDay.add(days: index)
@@ -236,10 +270,10 @@ open class SmallCalendarView: UIView {
     ///   - date: date that you wish to navigate
     ///   - animated: animation
     fileprivate func animationToDay(date: Date, animated: Bool) {
-                
+        
         // get weekMonth of date
         var weekMonth = calendar.component(.weekOfMonth, from: date)
-                
+        
         // minus 1 or 2 to weekMonth, because if weekMonth = 1, not need scroll
         weekMonth -= getFirstWeekDay()
         
@@ -270,23 +304,52 @@ open class SmallCalendarView: UIView {
     fileprivate func getFirstWeekDay() -> Int {
         return isAmericanCalendar ? 1 : 2
     }
+    
+    /// Creates a date object from indexPath
+    /// - Parameter indexPath: index path
+    /// - Returns: date object
+    fileprivate func createDateFrom(indexPath: IndexPath) -> Date? {
+        
+        // check if exists element on array
+        guard let range = data.range.getElement(indexPath.section),
+            let date = calendar.getDate(year: range.year, month: range.month, day: indexPath.row) else {
+                print("Error to create date from IndexPath")
+                return nil
+        }
+        
+        // return date object
+        return date
+    }
 }
 
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource
 extension SmallCalendarView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //        return data.range.getElement(section)?.daysInMonth ?? 0
         return elements.count
+    }
+    
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        //        return data.range.count
+        return 1
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NumberCalendarCell.identifier, for: indexPath) as? NumberCalendarCell else { return UICollectionViewCell()}
-                
+        
+        //        print("Section: \(indexPath.section), Row: \(indexPath.row), Item: \(indexPath.item)")
+        
         // check if exists element on array
+        //        if let date = createDateFrom(indexPath: indexPath) {
+        //            cell.updateUI(date: date, data: data)
+        //        }
+        
         if let date = elements.getElement(indexPath.row) {
             cell.updateUI(date: date, data: data)
         }
+        
         
         // return cell
         return cell
@@ -308,7 +371,7 @@ extension SmallCalendarView: UICollectionViewDelegateFlowLayout {
         itemWidth = availableWidth / ITEMS_BY_ROW
         
         // return item size
-                
+        
         return CGSize(width: itemWidth, height: collectionView.frame.height)
     }
     
@@ -326,18 +389,39 @@ extension SmallCalendarView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+//        guard let date = createDateFrom(indexPath: indexPath) else {
+//            print("Error to select date from calendar")
+//            return
+//        }
+        
         guard let date = elements.getElement(indexPath.row) else {
             print("Error to select date from calendar")
             return
         }
         
         // updates the data struct
-        updateData(data: CalendarData(selectedDate: date))
-        
+        var newData = data
+        newData.selectedDate = date
+        updateData(data: newData)
+                
         // refresh collectionview
         reloadData()
         
         // notify
         delegate?.didSelectedDate(date: date)
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            let currentPage = scrollView.currentPage
+            // Do something with your page update
+            print("scrollViewDidEndDragging: \(currentPage)")
+        }
+    }
+    
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let currentPage = scrollView.currentPage
+        // Do something with your page update
+        print("scrollViewDidEndDecelerating: \(currentPage)")
     }
 }
