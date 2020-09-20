@@ -38,6 +38,12 @@ public extension UIView {
         addSubview(view)
     }
     
+    /// Rounds the component
+    func round() {
+        layer.cornerRadius = min(frame.size.height, frame.size.width) / 2
+        clipsToBounds = true
+    }
+    
     // MARK: VARS
     static var nib: UINib {
         let bundle = Bundle(for: self)

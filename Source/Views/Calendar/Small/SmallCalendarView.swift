@@ -25,6 +25,7 @@ open class SmallCalendarView: UIView {
     private let calendar = Calendar.currentUTC
     private var data = CalendarData()
     
+    open weak var delegate: CalendarDelegate?
     open var isAmericanCalendar: Bool = Calendar.currentUTC.firstWeekday == 1 {
         didSet {
             setupView()
@@ -85,7 +86,7 @@ open class SmallCalendarView: UIView {
         monthLabel.text = "\(month.description) \(date.year)"
         
         // update data struct
-        data.selectedDate = date
+        updateData(data: CalendarData(selectedDate: date))
         
         print("Date on Calendar: \(data.selectedDate)")
     }
@@ -226,7 +227,7 @@ open class SmallCalendarView: UIView {
         }
         
         // reload collectionView
-        numberDaysCollectionView.reloadData()
+        reloadData()
     }
     
     /// Scroll Collectionview to specific day with optional animation
@@ -248,6 +249,17 @@ open class SmallCalendarView: UIView {
             self.numberDaysCollectionView.setContentOffset(CGPoint(x: UIScreen.main.bounds.width * CGFloat(weekMonth), y: 0), animated: animated)
         }
     }
+    
+    /// Update the data struct
+    /// - Parameter data: new data
+    fileprivate func updateData(data: CalendarData) {
+        self.data = data
+    }
+    
+    /// Reload the collection view in order to updates cells
+    fileprivate func reloadData() {
+        numberDaysCollectionView.reloadData()
+    }
 }
 
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource
@@ -263,7 +275,7 @@ extension SmallCalendarView: UICollectionViewDelegate, UICollectionViewDataSourc
                 
         // check if exists element on array
         if let date = elements.getElement(indexPath.row) {
-            cell.updateUI(date: date)
+            cell.updateUI(date: date, data: data)
         }
         
         // return cell
@@ -286,6 +298,7 @@ extension SmallCalendarView: UICollectionViewDelegateFlowLayout {
         itemWidth = availableWidth / ITEMS_BY_ROW
         
         // return item size
+                
         return CGSize(width: itemWidth, height: collectionView.frame.height)
     }
     
@@ -299,5 +312,22 @@ extension SmallCalendarView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let date = elements.getElement(indexPath.row) else {
+            print("Error to select date from calendar")
+            return
+        }
+        
+        // updates the data struct
+        updateData(data: CalendarData(selectedDate: date))
+        
+        // refresh collectionview
+        reloadData()
+        
+        // notify
+        delegate?.didSelectedDate(date: date)
     }
 }

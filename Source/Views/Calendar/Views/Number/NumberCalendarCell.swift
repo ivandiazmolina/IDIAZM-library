@@ -17,22 +17,35 @@ open class NumberCalendarCell: UICollectionViewCell {
         setupView()
     }
     
+    open override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        numberLabel.round()
+    }
+    
     fileprivate func setupView() {
         numberLabel.text = ""
     }
     
     /// Update UI of cell
     /// - Parameter date: date
-    func updateUI(date: Date) {
+    func updateUI(date: Date, data: CalendarData) {
+        
+//        setNeedsLayout()
+        layoutIfNeeded()
         
         // text
         numberLabel.text = String(describing: date.day)
-        
+                
         // text color
         if Calendar.currentUTC.day == date.day {
-            numberLabel.textColor = .red
+            numberLabel.textColor = .white
+            numberLabel.backgroundColor = .red
+        } else if date == data.selectedDate {
+            numberLabel.textColor = .white
+            numberLabel.backgroundColor = .blue
         } else {
             numberLabel.textColor = Calendar.currentUTC.month == date.month ? .black : .gray
+            numberLabel.backgroundColor = .white
         }
     }
 }

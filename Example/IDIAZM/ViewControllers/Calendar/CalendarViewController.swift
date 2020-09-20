@@ -36,6 +36,7 @@ class CalendarViewController: UIViewController {
         
         spanishLabel.text = "Spanish Calendar"
         spanishLabel.font = UIFont.boldSystemFont(ofSize: spanishLabel.font.pointSize)
+        spanishCalendar.delegate = self
         spanishCalendar.isAmericanCalendar = false
     }
     
@@ -44,8 +45,16 @@ class CalendarViewController: UIViewController {
         
         americanLabel.text = "American Calendar"
         americanLabel.font = UIFont.boldSystemFont(ofSize: americanLabel.font.pointSize)
+        americanCalendar.delegate = self
         americanCalendar.isAmericanCalendar = true
         
         
+    }
+}
+
+// MARK: CalendarDelegate
+extension CalendarViewController: CalendarDelegate {
+    func didSelectedDate(date: Date) {
+        print(date)
     }
 }
