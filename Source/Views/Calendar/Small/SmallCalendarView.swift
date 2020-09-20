@@ -21,15 +21,15 @@ open class SmallCalendarView: UIView {
     
     // MARK: VARS
     private var elements: [Date] = []
+    private var itemWidth: CGFloat = 0
+    private let calendar = Calendar.currentUTC
+    private var data = CalendarData()
+    
     open var isAmericanCalendar: Bool = Calendar.currentUTC.firstWeekday == 1 {
         didSet {
             setupView()
         }
     }
-    
-    private let calendar = Calendar.currentUTC
-    private var selectedDay: Date = Date()
-    private var itemWidth: CGFloat = 0
     
     // MARK: Initializers
     override init(frame: CGRect) {
@@ -48,10 +48,46 @@ open class SmallCalendarView: UIView {
     
     @IBAction func onBackTap(_ sender: UIButton) {
         print("Back tapped")
+        updateDate(date: data.selectedDate.add(months: -1))
     }
     
     @IBAction func onNextTap(_ sender: UIButton) {
         print("Next tapped")
+        updateDate(date: data.selectedDate.add(months: 1))
+    }
+    
+    // MARK: Public methods
+    
+    /// Gets the Month Object from a Date
+    /// - Parameter date: Date which you wish the month object
+    /// - Returns: Month , otherwhise nil
+    func getMonth(date: Date = Date()) -> Calendar.Months? {
+        
+        guard let month = Calendar.Months(rawValue: date.month) else {
+            print("Error to get month")
+            return nil
+        }
+        
+        return month
+    }
+    
+    /// Updates Calendar UI
+    /// - Parameter date: date which you want to show on the calendar
+    func updateDate(date: Date) {
+        
+        // get the month object from date
+        guard let month = getMonth(date: date) else {
+            print("Error to update month")
+            return
+        }
+        
+        // updates the month label
+        monthLabel.text = "\(month.description) \(date.year)"
+        
+        // update data struct
+        data.selectedDate = date
+        
+        print("Date on Calendar: \(data.selectedDate)")
     }
     
     
@@ -76,16 +112,17 @@ open class SmallCalendarView: UIView {
         calculateDays()
         
         // TEST ANIMATION
-//        let dateComponents = DateComponents(year: 2020, month: 9, day: 1)
+//        let dateComponents = DateComponents(year: 2020, month: 9, day: 20)
 //        var mDate = Calendar.currentUTC.date(from: dateComponents)!
         
         // Animate to current day
-        animationToDay(date: Date(), animated: false)
+        animationToDay(date: data.selectedDate, animated: false)
     }
     
     /// Setup the Months 
     fileprivate func setupMonths() {
-        monthLabel.text = getMonthName()
+        
+        updateDate(date: data.selectedDate)
     }
     
     /// Setup the StackView component which contains the days of week
@@ -192,17 +229,13 @@ open class SmallCalendarView: UIView {
         numberDaysCollectionView.reloadData()
     }
     
-    /// Get the String of the month parameter
-    /// - Parameter month: month of which you want its name
-    fileprivate func getMonthName(month: Calendar.Months = .current) -> String {
-        return month.description
-    }
-    
     /// Scroll Collectionview to specific day with optional animation
     /// - Parameters:
     ///   - date: date that you wish to navigate
     ///   - animated: animation
     fileprivate func animationToDay(date: Date, animated: Bool) {
+        
+        // FIXME: 20 september 2020 error EEUU vs Spain
         
         // get weekMonth of date
         var weekMonth = calendar.component(.weekOfMonth, from: date)
