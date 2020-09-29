@@ -37,10 +37,10 @@ open class NumberCalendarCell: UICollectionViewCell {
         numberLabel.text = String(describing: date.day)
                 
         // text color
-        if Calendar.currentUTC.today.day == date.day {
+        if data.currentDate.startOfDay == date.startOfDay {
             numberLabel.textColor = .white
             numberLabel.backgroundColor = .red
-        } else if date == data.selectedDate {
+        } else if data.selectedDate == date {
             numberLabel.textColor = .white
             numberLabel.backgroundColor = .blue
         } else {

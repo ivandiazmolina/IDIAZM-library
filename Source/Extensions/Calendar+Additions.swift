@@ -135,6 +135,18 @@ public extension Calendar {
         return calendar.date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfCurrentMonth)!
     }
     
+    /// Gets the first day of current month
+    var firstDayOfCurrentWeek: Date {
+        let calendar = Calendar.currentUTC
+        return calendar.today.firstDayOfWeek
+    }
+
+    /// Gets the last day of current week
+    var lastDayOfCurrentWeek: Date {
+        let calendar = Calendar.currentUTC
+        return calendar.today.lastDayOfWeek
+    }
+    
     /// Gets current year
     var year: Int {
         return Date().year

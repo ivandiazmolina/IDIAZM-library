@@ -43,6 +43,25 @@ public extension Date {
         return calendar.range(of: .day, in: .month, for: self)!.count
     }
     
+    /// Gets the first day of week
+    var firstDayOfWeek: Date {
+        let calendar = Calendar.currentUTC
+        let firstWeekDay = calendar.firstWeekday
+        let weekDayFirstDay = calendar.component(.weekday, from: self)
+        
+        let diff = weekDayFirstDay - firstWeekDay
+        let firstDay = self.add(days: -(diff))
+        return firstDay
+    }
+    
+    /// Gets the last day of week
+    var lastDayOfWeek: Date {
+        let firstWeekDay = firstDayOfWeek
+        
+        let lastDay = firstWeekDay.add(days: 6)
+        return lastDay
+    }
+    
     /// Gets current year
     var year: Int {
         let calendar = Calendar.currentUTC
@@ -99,6 +118,20 @@ public extension Date {
     func add(months: Int) -> Date {
         let calendar = Calendar.currentUTC
         return calendar.date(byAdding: .month, value: months, to: self)!
+    }
+    
+    /// Adds or substracts weeks from date object
+    ///
+    /// Usage:
+    ///
+    ///     let date = Date()
+    ///     date.add(weeks: 1) // add
+    ///     date.add(weeks: -1) // subtract
+    ///
+    /// - Returns: String date formated
+    func add(weeks: Int) -> Date {
+        let calendar = Calendar.currentUTC
+        return calendar.date(byAdding: .day, value: weeks * 7, to: self)!
     }
     
     /// Adds or substracts days from date object

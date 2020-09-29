@@ -172,6 +172,13 @@ class ViewController: UIViewController {
         // test last day of current month
         print("Last day of month: \(date.lastDayOfMonth)")
         
+        // test first day of current week
+        print("First day of week: \(date.firstDayOfWeek)")
+        
+        // test last day of current week
+        print("Last day of week: \(date.lastDayOfWeek)")
+        
+        
         date = Date()
         print("Changing to current date: \(date)")
         
@@ -196,6 +203,9 @@ class ViewController: UIViewController {
         // test add months
         print(date.add(months: 1))
         print(date.add(months: -1)) // you can negative numbers
+        
+        // test add week
+        print(date.add(weeks: 1))
         
         // test add days
         print(date.add(days: 1))
@@ -224,6 +234,7 @@ class ViewController: UIViewController {
         newLine()
     }
     
+    /// method to test extensions of Calendar
     private func testCalendarExtensions() {
         
         print("Calendar EXTENSIONS")
@@ -251,6 +262,12 @@ class ViewController: UIViewController {
         
         // test last day of current month
         print("Last day of current month: \(calendar.lastDayOfCurrentMonth)")
+        
+        // test first day of current week
+        print("First day of current week: \(calendar.firstDayOfCurrentWeek)")
+        
+        // test last day of current week
+        print("Last day of current week: \(calendar.lastDayOfCurrentWeek)")
         
         // test year
         print("Year: \(calendar.year)")
