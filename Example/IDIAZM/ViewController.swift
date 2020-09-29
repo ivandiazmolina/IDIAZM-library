@@ -178,9 +178,11 @@ class ViewController: UIViewController {
         // test last day of current week
         print("Last day of week: \(date.lastDayOfWeek)")
         
-        
         date = Date()
         print("Changing to current date: \(date)")
+        
+        // test is same day
+        print("Is same day?: \(date.isSameDate(date: Date().add(days: 1)))")
         
         // test year
         print("Year: \(date.year)")

@@ -202,9 +202,7 @@ open class SmallCalendarView: UIView {
         
         // get the first and last day of current month
         var firstDayOfCurrentWeek = calendar.firstDayOfCurrentWeek
-        
-        print("FirstDayOfCurrentWeek: \(firstDayOfCurrentWeek), isAmericanCalendar: \(isAmericanCalendar), locale: \(calendar.locale), wekkDay: \(calendar.firstWeekday)")
-        
+                
         // get the firstWeekDay switch calendar type
         if isAmericanCalendar && calendar.firstWeekday == 2 { // isAmericanCalendar && firsWeekday spanish
             firstDayOfCurrentWeek = firstDayOfCurrentWeek.add(days: -1)
@@ -212,13 +210,16 @@ open class SmallCalendarView: UIView {
             firstDayOfCurrentWeek = firstDayOfCurrentWeek.add(days: 1)
         }
         
+        // get the past week
         let lastWeek = firstDayOfCurrentWeek.add(weeks: -1)
         
         // clear the elements object
         data.weekRange = []
         
+        // init a temporal array
         var elements: [Date] = []
         
+        // get days
         for index in 0...20 {   // 20 = 3 weeks
             let day = lastWeek.add(days: index)
             elements.append(day)
@@ -498,8 +499,12 @@ extension SmallCalendarView: UICollectionViewDelegateFlowLayout {
         switch currentPage {
         case 0: // past
             updates3Weeks(forward: false)
+            updateDate(date: data.selectedDate.add(weeks: -1))
+            reloadData()
         case 2: // future
             updates3Weeks(forward: true)
+            updateDate(date: data.selectedDate.add(weeks: 1))
+            reloadData()
         default:
             break
         }

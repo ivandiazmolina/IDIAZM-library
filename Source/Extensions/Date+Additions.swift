@@ -176,6 +176,19 @@ public extension Date {
         return calendar.date(byAdding: .minute, value: minutes, to: self)!
     }
     
+    /// check if date is same day
+    ///
+    /// Usage:
+    ///
+    ///     let today = Date()
+    ///     let tomorrow = today.add(days: 1)
+    ///     today.isSameDate(tomorrow) // return false
+    ///
+    /// - Returns: String date formated
+    func isSameDate(date: Date) -> Bool {
+        return year == date.year && month == date.month && day == date.day
+    }
+    
     /// Converts a date to string with a specific format
     ///
     /// - Returns: String date formated

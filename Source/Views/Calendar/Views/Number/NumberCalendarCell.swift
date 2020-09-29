@@ -35,12 +35,12 @@ open class NumberCalendarCell: UICollectionViewCell {
         
         // text
         numberLabel.text = String(describing: date.day)
-                
+                        
         // text color
-        if data.currentDate.startOfDay == date.startOfDay {
+        if data.currentDate.isSameDate(date: date) {
             numberLabel.textColor = .white
             numberLabel.backgroundColor = .red
-        } else if data.selectedDate == date {
+        } else if data.selectedDate.isSameDate(date: date) {
             numberLabel.textColor = .white
             numberLabel.backgroundColor = .blue
         } else {
