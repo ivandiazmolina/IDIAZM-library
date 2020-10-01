@@ -23,10 +23,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xUn-1f-mNa" customClass="SmallCalendarView" customModule="IDIAZM">
-                                <rect key="frame" x="0.0" y="88.5" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="88.5" width="414" height="110"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="saW-oi-yhK"/>
+                                    <constraint firstAttribute="height" constant="110" id="saW-oi-yhK"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5P-Yk-zJn">
@@ -42,6 +42,12 @@
                                     <constraint firstAttribute="height" constant="100" id="j7f-gN-Xd6"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GjL-s7-9lV" customClass="BigCalendarView" customModule="IDIAZM">
+                                <rect key="frame" x="0.0" y="206.5" width="414" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" placeholder="YES" id="6AH-af-mVy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -51,14 +57,29 @@
                             <constraint firstItem="upk-y4-NXE" firstAttribute="leading" secondItem="vgL-bp-nMA" secondAttribute="leading" constant="8" id="Jej-q2-orI"/>
                             <constraint firstItem="upk-y4-NXE" firstAttribute="top" secondItem="vgL-bp-nMA" secondAttribute="top" constant="16" id="LFc-lz-trc"/>
                             <constraint firstItem="Q5P-Yk-zJn" firstAttribute="leading" secondItem="vgL-bp-nMA" secondAttribute="leading" constant="8" id="PLA-TU-Xor"/>
+                            <constraint firstItem="vgL-bp-nMA" firstAttribute="trailing" secondItem="GjL-s7-9lV" secondAttribute="trailing" id="SXt-UF-RT3"/>
                             <constraint firstItem="Q5P-Yk-zJn" firstAttribute="top" secondItem="xUn-1f-mNa" secondAttribute="bottom" constant="32" id="YZg-py-FlW"/>
                             <constraint firstItem="Q5P-Yk-zJn" firstAttribute="trailing" secondItem="vgL-bp-nMA" secondAttribute="trailing" constant="8" id="aLl-Gq-CVK"/>
                             <constraint firstItem="vgL-bp-nMA" firstAttribute="trailing" secondItem="xyq-ub-HTD" secondAttribute="trailing" symbolic="YES" id="bWg-7b-vGI"/>
+                            <constraint firstItem="GjL-s7-9lV" firstAttribute="top" secondItem="xUn-1f-mNa" secondAttribute="bottom" constant="8" id="dQT-nS-1tf"/>
                             <constraint firstItem="xyq-ub-HTD" firstAttribute="top" secondItem="Q5P-Yk-zJn" secondAttribute="bottom" constant="8" symbolic="YES" id="elX-Ud-SNw"/>
+                            <constraint firstItem="GjL-s7-9lV" firstAttribute="top" secondItem="xyq-ub-HTD" secondAttribute="bottom" id="fTb-hP-dks"/>
+                            <constraint firstItem="GjL-s7-9lV" firstAttribute="top" secondItem="vgL-bp-nMA" secondAttribute="top" constant="16" id="jFX-iO-XC3"/>
+                            <constraint firstItem="GjL-s7-9lV" firstAttribute="leading" secondItem="vgL-bp-nMA" secondAttribute="leading" id="kvW-lx-7zV"/>
                             <constraint firstItem="xUn-1f-mNa" firstAttribute="leading" secondItem="vgL-bp-nMA" secondAttribute="leading" id="orF-JR-4yP"/>
                             <constraint firstAttribute="trailing" secondItem="upk-y4-NXE" secondAttribute="trailing" constant="8" id="xwp-rM-oFB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vgL-bp-nMA"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Q5P-Yk-zJn"/>
+                                <exclude reference="xyq-ub-HTD"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="fTb-hP-dks"/>
+                                <exclude reference="jFX-iO-XC3"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="americanCalendar" destination="xyq-ub-HTD" id="if4-wj-eTO"/>

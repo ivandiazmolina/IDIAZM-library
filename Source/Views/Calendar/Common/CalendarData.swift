@@ -8,6 +8,6 @@
 public struct CalendarData {
     let currentDate = Date()
     var selectedDate = Date()
-    var range: [CalendarRange] = []
     var weekRange: [[Date]] = []
+    var monthRange: [WeekRange] = []
 }

@@ -1,14 +1,13 @@
 //
-//  SmallCalendarView.swift
+//  BigCalendarView.swift
 //  IDIAZM
 //
-//  Created by Iván Díaz Molina on 13/09/2020.
-//  Copyright © 2020 IDIAZM. All rights reserved.
+//  Created by Iván Díaz Molina on 29/09/2020.
 //
 
 import UIKit
 
-open class SmallCalendarView: UIView {
+open class BigCalendarView: UIView {
     
     // MARK: IBOutlets
     @IBOutlet weak var weekDaysStackView: UIStackView!
@@ -18,6 +17,7 @@ open class SmallCalendarView: UIView {
     // MARK: LETS
     private let ITEMS_BY_ROW: CGFloat = 7 // 7 days
     private let SECTION_INSETS = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+    private let DIFF_YEARS = 5
     
     // MARK: VARS
     private let calendar = Calendar.currentUTC
@@ -112,14 +112,12 @@ open class SmallCalendarView: UIView {
         // Create Week Days
         createWeekDays()
         
-        // Setup 3 weeks
-        setup3Weeks()
-        
-        // Animate to current day
-        animationToDay(animated: false)
+        // Setup Calendar Range
+        //        setupCalendarRange()
+        calculateDays(date: calendar.getDate(year: 2020, month: 9) ?? Date())
     }
     
-    /// Setup the Months 
+    /// Setup the Months
     fileprivate func setupMonths() {
         
         updateDate(date: data.selectedDate)
@@ -140,6 +138,8 @@ open class SmallCalendarView: UIView {
         numberDaysCollectionView.dataSource = self
         
         if let layout = numberDaysCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
             layout.scrollDirection = .horizontal
         }
         
@@ -212,7 +212,7 @@ open class SmallCalendarView: UIView {
         }
         
         // split the elements
-        data.weekRange = elements.chunked(into: Int(ITEMS_BY_ROW))
+        //        data.weekRange = elements.chunked(into: Int(ITEMS_BY_ROW))
         
         // reload collectionView
         reloadData()
@@ -244,6 +244,66 @@ open class SmallCalendarView: UIView {
         
         // scroll to new position
         animationToDay(animated: false)
+    }
+    
+    /// Calculate the days to show in calendar view
+    fileprivate func calculateDays(date: Date) {
+        
+        // get the first and last day of current month
+        //
+        //        Date().year
+        //        Date().month
+        
+        //        calendar.getDate(year: 2020, month: 1)
+        
+        let firstDay = date.firstDayOfMonth
+        let lastDay = date.lastDayOfMonth
+        
+        // clear the elements object
+        var elements: [Date] = []
+        
+        // get the firstWeekDay switch calendar type
+        let firstWeekDay = getFirstWeekDay()
+        
+        // get the weekDays of first and last day of calendar
+        let weekDayFirstDay = calendar.component(.weekday, from: firstDay)
+        let weekDayLastDay = calendar.component(.weekday, from: lastDay)
+        
+        // calculate past days of month
+        var diff = weekDayFirstDay - firstWeekDay
+        for index in 1...diff {
+            let beforeDay = firstDay.add(days: -(index))
+            elements.append(beforeDay)
+        }
+        
+        // reverse the elements of array
+        elements.reverse()
+        
+        // calculate days of month
+        let totalDaysOfMonth = date.daysOfMonth
+        for i in 0...totalDaysOfMonth - 1 {
+            elements.append(firstDay.add(days: i))
+        }
+        
+        // calculate future days of month
+        diff = Int(ITEMS_BY_ROW) - (isAmericanCalendar ? weekDayLastDay : weekDayLastDay - 1)
+        if diff > 0 {
+            for index in 1...diff {
+                let afterDay = lastDay.add(days: index)
+                elements.append(afterDay)
+            }
+        }
+        
+        data.monthRange.append(WeekRange(week: elements.chunked(into: Int(ITEMS_BY_ROW))))
+        
+        //        data.monthRange.append(elements.chunked(into: Int(ITEMS_BY_ROW))
+        
+        // split the elements
+        //        var calendarRange = WeekRange(month: date.month, year: date.year, daysInMonth: 30, weekRange: elements.chunked(into: Int(ITEMS_BY_ROW)))
+        //        data.monthRange.append
+        
+        // reload collectionView
+        reloadData()
     }
     
     /// Scroll Collectionview to specific day with optional animation
@@ -280,6 +340,7 @@ open class SmallCalendarView: UIView {
     fileprivate func createDateFrom(indexPath: IndexPath) -> Date? {
         
         return Date()
+        
         //        // check if exists element on array
         //        guard let range = data.monthRange.getElement(indexPath.section),
         //            let date = calendar.getDate(year: range.year, month: range.month, day: indexPath.row) else {
@@ -287,16 +348,20 @@ open class SmallCalendarView: UIView {
         //                return nil
         //        }
         //
-        //        // return date object
+        // return date object
         //        return date
     }
 }
 
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource
-extension SmallCalendarView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension BigCalendarView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.weekRange.count
+        return data.monthRange.getElement(section)?.week.count ?? 0
+    }
+    
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return data.monthRange.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -305,7 +370,8 @@ extension SmallCalendarView: UICollectionViewDelegate, UICollectionViewDataSourc
         
         cell.delegate = self
         
-        if let week = data.weekRange.getElement(indexPath.row) {
+        // check if exists element on array
+        if let week = data.monthRange.getElement(indexPath.section)?.week.getElement(indexPath.row) {
             cell.updateUI(dates: week, data: data)
         }
         
@@ -314,7 +380,7 @@ extension SmallCalendarView: UICollectionViewDelegate, UICollectionViewDataSourc
 }
 
 // MARK: UICollectionViewFlowLayout
-extension SmallCalendarView: UICollectionViewDelegateFlowLayout {
+extension BigCalendarView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // return item size
@@ -346,6 +412,8 @@ extension SmallCalendarView: UICollectionViewDelegateFlowLayout {
         // Do something with your page update
         print("scrollViewDidEndDecelerating: \(currentPage)")
         
+        return
+        
         switch currentPage {
         case 0: // past
             updates3Weeks(forward: false)
@@ -363,8 +431,10 @@ extension SmallCalendarView: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: WeekCalendarCellDelegate
-extension SmallCalendarView: WeekCalendarCellDelegate {
+extension BigCalendarView: WeekCalendarCellDelegate {
     public func didSelectedDay(date: Date) {
+        
+        print(date)
         
         // updates the data struct
         var newData = data

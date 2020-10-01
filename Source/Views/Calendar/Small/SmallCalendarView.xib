@@ -17,17 +17,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="okS-JY-JCr">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KVF-Gs-z1w">
-                    <rect key="frame" x="0.0" y="44" width="375" height="42"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KVF-Gs-z1w">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zza-Zw-MLl">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="14"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5V-9Y-59l">
-                                    <rect key="frame" x="120.5" y="-8" width="46" height="30"/>
+                                    <rect key="frame" x="93" y="2.5" width="46" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="46" id="bvn-7M-vYs"/>
                                     </constraints>
@@ -39,13 +39,13 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hz2-rU-sVM">
-                                    <rect key="frame" x="166.5" y="-3" width="42" height="20.5"/>
+                                    <rect key="frame" x="139" y="7.5" width="42" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ej0-tw-fqt">
-                                    <rect key="frame" x="208.5" y="-8" width="46" height="30"/>
+                                    <rect key="frame" x="181" y="2.5" width="46" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="46" id="l4U-nf-aTS"/>
                                     </constraints>
@@ -60,6 +60,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="hz2-rU-sVM" firstAttribute="centerX" secondItem="zza-Zw-MLl" secondAttribute="centerX" id="H0T-0O-XyO"/>
+                                <constraint firstAttribute="height" priority="750" constant="35" id="Okk-7Q-S5s"/>
                                 <constraint firstItem="ej0-tw-fqt" firstAttribute="centerY" secondItem="zza-Zw-MLl" secondAttribute="centerY" id="aRf-d4-thz"/>
                                 <constraint firstItem="ej0-tw-fqt" firstAttribute="leading" secondItem="hz2-rU-sVM" secondAttribute="trailing" id="bci-UW-Qki"/>
                                 <constraint firstItem="b5V-9Y-59l" firstAttribute="trailing" secondItem="hz2-rU-sVM" secondAttribute="leading" id="cwL-Um-BWT"/>
@@ -68,11 +69,17 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ew9-Ai-Eo3" userLabel="weekDays">
-                            <rect key="frame" x="0.0" y="14" width="375" height="14"/>
+                            <rect key="frame" x="0.0" y="35" width="320" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="750" constant="35" id="vJb-bv-je6"/>
+                            </constraints>
                         </stackView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bcs-Mj-zN8" userLabel="numberDays">
-                            <rect key="frame" x="0.0" y="28" width="375" height="14"/>
+                            <rect key="frame" x="0.0" y="70" width="320" height="40"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="xRJ-Ht-k5V"/>
+                            </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QmX-IY-gJb">
                                 <size key="itemSize" width="50" height="50"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -86,13 +93,13 @@
             </subviews>
             <constraints>
                 <constraint firstItem="KVF-Gs-z1w" firstAttribute="leading" secondItem="oyd-iE-vrF" secondAttribute="leading" id="QMh-O6-F6H"/>
-                <constraint firstItem="oyd-iE-vrF" firstAttribute="bottom" secondItem="KVF-Gs-z1w" secondAttribute="bottom" id="d07-VV-vfo"/>
+                <constraint firstAttribute="bottom" secondItem="KVF-Gs-z1w" secondAttribute="bottom" id="d07-VV-vfo"/>
                 <constraint firstItem="oyd-iE-vrF" firstAttribute="trailing" secondItem="KVF-Gs-z1w" secondAttribute="trailing" id="lij-zG-oUH"/>
-                <constraint firstItem="KVF-Gs-z1w" firstAttribute="top" secondItem="oyd-iE-vrF" secondAttribute="top" id="wHs-Tt-6Hf"/>
+                <constraint firstItem="KVF-Gs-z1w" firstAttribute="top" secondItem="okS-JY-JCr" secondAttribute="top" id="wHs-Tt-6Hf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="oyd-iE-vrF"/>
-            <point key="canvasLocation" x="-150" y="-296"/>
+            <point key="canvasLocation" x="-150" y="-275.22321428571428"/>
         </view>
     </objects>
 </document>

@@ -1,5 +1,5 @@
 //
-//  NumberCalendarCell.swift
+//  DayCalendarCell.swift
 //  IDIAZM
 //
 //  Created by Iván Díaz Molina on 13/09/2020.
@@ -8,12 +8,20 @@
 
 import UIKit
 
-open class NumberCalendarCell: UICollectionViewCell {
+open class DayCalendarCell: UIView {
     
     @IBOutlet weak var numberLabel: UILabel!
     
-    override open func awakeFromNib() {
-        super.awakeFromNib()
+    // MARK: - Initializers
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupXib()
+        setupView()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupXib()
         setupView()
     }
     
@@ -47,5 +55,6 @@ open class NumberCalendarCell: UICollectionViewCell {
             numberLabel.textColor = Calendar.currentUTC.month == date.month ? .black : .gray
             numberLabel.backgroundColor = .white
         }
+        
     }
 }
