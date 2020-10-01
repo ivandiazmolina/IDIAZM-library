@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: VARS AND LETS
-    private let OPTIONS: [String] = ["Intrinsic Height TableView", "Custom Cell TableView", "Custom Cell CollectionView", "FAB", "Calendar"]
+    private let OPTIONS: [String] = ["Intrinsic Height TableView", "Custom Cell TableView", "Custom Cell CollectionView", "FAB", "Calendar", "Editors"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -365,6 +365,17 @@ extension ViewController {
         }
     }
     
+    /// method that navigate to Editors
+    private func navigateToEditors() {
+        print("navigateToCalendar")
+        
+        let storyBoard = UIStoryboard(name: "Editors", bundle: nil)
+        if let viewController: EditorsViewController = storyBoard.instantiateInitialViewController() as? EditorsViewController,
+            let navController = navigationController {
+            navController.show(viewController, sender: nil)
+        }
+    }
+    
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
@@ -395,6 +406,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         case 2: navigateToCustomCellCollectionView()
         case 3: navigateToFAB()
         case 4: navigateToCalendar()
+        case 5: navigateToEditors()
         default: break
         }
     }
