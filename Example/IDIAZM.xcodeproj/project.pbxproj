@@ -23,6 +23,8 @@
 		2CC536AB2504C634000B1B16 /* IntrinsicHeightTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC536AA2504C634000B1B16 /* IntrinsicHeightTableViewViewController.swift */; };
 		2CC536AD2504C665000B1B16 /* IntrinsicHeightTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC536AC2504C665000B1B16 /* IntrinsicHeightTableView.storyboard */; };
 		4F4BE45E4EA629312710D10E /* Pods_IDIAZM_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587D7E6E56BD631D34722EA1 /* Pods_IDIAZM_Tests.framework */; };
+		5F2755482525D72500E898BD /* Editors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F2755472525D72500E898BD /* Editors.storyboard */; };
+		5F27554C2525D75900E898BD /* EditorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F27554B2525D75900E898BD /* EditorsViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -62,6 +64,8 @@
 		2CC536AC2504C665000B1B16 /* IntrinsicHeightTableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IntrinsicHeightTableView.storyboard; sourceTree = "<group>"; };
 		49A478958F661E42A89C4910 /* Pods-IDIAZM_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDIAZM_Example.debug.xcconfig"; path = "Target Support Files/Pods-IDIAZM_Example/Pods-IDIAZM_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		587D7E6E56BD631D34722EA1 /* Pods_IDIAZM_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IDIAZM_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F2755472525D72500E898BD /* Editors.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Editors.storyboard; sourceTree = "<group>"; };
+		5F27554B2525D75900E898BD /* EditorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorsViewController.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* IDIAZM_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDIAZM_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		2CC536A72504C5F9000B1B16 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5F48656B2524EA18004F85B4 /* Editors */,
 				2CC4C77825108DF000C696E4 /* Calendar */,
 				2C8131912506681400D32D1F /* CustomCell */,
 				2C570C26250F737400B46094 /* CustomCellCollectionView */,
@@ -175,6 +180,15 @@
 				2CC536AC2504C665000B1B16 /* IntrinsicHeightTableView.storyboard */,
 			);
 			path = IntrinsicHeightTableView;
+			sourceTree = "<group>";
+		};
+		5F48656B2524EA18004F85B4 /* Editors */ = {
+			isa = PBXGroup;
+			children = (
+				5F2755472525D72500E898BD /* Editors.storyboard */,
+				5F27554B2525D75900E898BD /* EditorsViewController.swift */,
+			);
+			path = Editors;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -359,6 +373,7 @@
 				2C81319A2506695700D32D1F /* CustomViewTableViewCell.xib in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				2C570C2F250FAF0200B46094 /* CustomViewCollectionViewCell.xib in Resources */,
+				5F2755482525D72500E898BD /* Editors.storyboard in Resources */,
 				2C899C272503B9B8007A2699 /* Localizable.strings in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				2CC4C77E25108E2900C696E4 /* Calendar.storyboard in Resources */,
@@ -450,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				5F27554C2525D75900E898BD /* EditorsViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				2C570C31250FAF3A00B46094 /* CustomViewCollectionViewCell.swift in Sources */,
 				2C46FE42250BDB6200157C93 /* FABViewController.swift in Sources */,
