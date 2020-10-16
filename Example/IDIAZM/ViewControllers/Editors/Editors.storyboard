@@ -16,9 +16,23 @@
                     <view key="view" contentMode="scaleToFill" id="qLe-66-MC6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wtq-sV-eaG">
+                                <rect key="frame" x="16" y="60" width="382" height="786"/>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yiB-dI-Z1i"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wtq-sV-eaG" firstAttribute="leading" secondItem="yiB-dI-Z1i" secondAttribute="leading" constant="16" id="EWY-P4-GDX"/>
+                            <constraint firstItem="Wtq-sV-eaG" firstAttribute="top" secondItem="yiB-dI-Z1i" secondAttribute="top" constant="16" id="TSu-en-xhR"/>
+                            <constraint firstItem="yiB-dI-Z1i" firstAttribute="bottom" secondItem="Wtq-sV-eaG" secondAttribute="bottom" constant="16" id="W6M-RU-1MT"/>
+                            <constraint firstItem="yiB-dI-Z1i" firstAttribute="trailing" secondItem="Wtq-sV-eaG" secondAttribute="trailing" constant="16" id="iX5-mG-uT4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="stack" destination="Wtq-sV-eaG" id="nUf-mt-bHd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zod-cz-zeb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
