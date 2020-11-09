@@ -84,6 +84,7 @@
                     <connections>
                         <outlet property="americanCalendar" destination="xyq-ub-HTD" id="if4-wj-eTO"/>
                         <outlet property="americanLabel" destination="Q5P-Yk-zJn" id="gTh-pT-rCB"/>
+                        <outlet property="bigCalendar" destination="GjL-s7-9lV" id="IaE-kz-qnq"/>
                         <outlet property="spanishCalendar" destination="xUn-1f-mNa" id="toI-j6-GYX"/>
                         <outlet property="spanishLabel" destination="upk-y4-NXE" id="hO1-xa-dH5"/>
                     </connections>

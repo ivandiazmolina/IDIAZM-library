@@ -15,6 +15,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var spanishCalendar: SmallCalendarView!
     @IBOutlet weak var americanLabel: UILabel!
     @IBOutlet weak var americanCalendar: SmallCalendarView!
+    @IBOutlet weak var bigCalendar: BigCalendarView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class CalendarViewController: UIViewController {
         
         // setup Calendars
         setupSpanishCalendar()
-        setupAmericanCalendar()
+        setupBigCalendar()
     }
     
     /// Setup Spanish Calendar
@@ -41,14 +42,9 @@ class CalendarViewController: UIViewController {
     }
     
     /// Setup American Calendar
-    fileprivate func setupAmericanCalendar() {
-        
-        americanLabel.text = "American Calendar"
-        americanLabel.font = UIFont.boldSystemFont(ofSize: americanLabel.font.pointSize)
-        americanCalendar.delegate = self
-        americanCalendar.isAmericanCalendar = true
-        
-        
+    fileprivate func setupBigCalendar() {
+        bigCalendar.delegate = self
+        bigCalendar.isAmericanCalendar = false
     }
 }
 
