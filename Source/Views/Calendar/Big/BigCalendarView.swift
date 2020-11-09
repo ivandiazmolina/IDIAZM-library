@@ -114,7 +114,10 @@ open class BigCalendarView: UIView {
         
         // Setup Calendar Range
         //        setupCalendarRange()
-        calculateDays(date: calendar.getDate(year: 2020, month: 9) ?? Date())
+        createMonths()
+        
+        //animateToCurrentMonth
+        animationToDay(animated: false)
     }
     
     /// Setup the Months
@@ -170,6 +173,14 @@ open class BigCalendarView: UIView {
             label.textAlignment = .center
             
             weekDaysStackView.addArrangedSubview(label)
+        }
+    }
+    
+    fileprivate func createMonths() {
+        let currentDate = Date()
+        for int in -1...1 {
+            let calculatedDate = currentDate.add(months: int)
+            calculateDays(date: calendar.getDate(year: calculatedDate.year, month: calculatedDate.month) ?? Date())
         }
     }
     
@@ -270,10 +281,13 @@ open class BigCalendarView: UIView {
         let weekDayLastDay = calendar.component(.weekday, from: lastDay)
         
         // calculate past days of month
+        
         var diff = weekDayFirstDay - firstWeekDay
-        for index in 1...diff {
-            let beforeDay = firstDay.add(days: -(index))
-            elements.append(beforeDay)
+        if diff > 0 {
+            for index in 1...diff {
+                let beforeDay = firstDay.add(days: -(index))
+                elements.append(beforeDay)
+            }
         }
         
         // reverse the elements of array

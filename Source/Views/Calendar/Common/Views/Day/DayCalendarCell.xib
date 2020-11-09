@@ -21,9 +21,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="293" height="111"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29R-am-koH">
-                            <rect key="frame" x="125.5" y="34.5" width="42" height="42"/>
+                            <rect key="frame" x="126.5" y="35.5" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="29R-am-koH" secondAttribute="height" multiplier="1:1" id="2To-Dv-ELX"/>
+                                <constraint firstAttribute="height" constant="40" id="FoS-9o-zRz"/>
+                                <constraint firstAttribute="width" constant="40" id="yiz-MG-A5o"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
