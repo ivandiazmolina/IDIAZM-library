@@ -17,7 +17,7 @@
 ///
 /// Execute a function on UI Thread
 /// - Parameter f: function
-func ui(_ f: @escaping () -> Void) {
+public func ui(_ f: @escaping () -> Void) {
     
     DispatchQueue.main.async {
         f()
@@ -36,7 +36,7 @@ func ui(_ f: @escaping () -> Void) {
 ///
 /// Execute a function on UI Thread
 /// - Parameter f: function
-func background(_ f: @escaping () -> Void) {
+public func background(_ f: @escaping () -> Void) {
     
     DispatchQueue.global(qos: .background).async {
         f()
