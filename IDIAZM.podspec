@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name                  = 'IDIAZM'
-  s.version               = '0.0.2'
+  s.version               = '0.0.3'
   s.summary               = 'This is a test CocoaPods Library for iOS Swift.'
   s.homepage              = 'https://github.com/ivandiazmolina/IDIAZM-library'
   s.license               = 'MIT'
