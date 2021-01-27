@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: VARS AND LETS
-    private let OPTIONS: [String] = ["Intrinsic Height TableView", "Custom Cell TableView", "Custom Cell CollectionView", "FAB"]
+    private let OPTIONS: [String] = ["Intrinsic Height TableView", "Custom Cell TableView", "Custom Cell CollectionView", "FAB", "Calendar", "Editors"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     }
     
     private func setupView() {
+        
+        self.title = "Views"
         
         // setup TableView
         setupTableView()
@@ -147,8 +149,9 @@ class ViewController: UIViewController {
         let dateComponents = DateComponents(year: 2020, month: 2, day: 15)
         var date = Calendar.currentUTC.date(from: dateComponents)!
         
-        let day: Date.WeekDays = .friday
-        
+        let day: Calendar.WeekDays = .friday
+        let month: Calendar.Months = .current
+                
         print("DATE EXTENSIONS")
         print("=================")
                 
@@ -169,8 +172,17 @@ class ViewController: UIViewController {
         // test last day of current month
         print("Last day of month: \(date.lastDayOfMonth)")
         
+        // test first day of current week
+        print("First day of week: \(date.firstDayOfWeek)")
+        
+        // test last day of current week
+        print("Last day of week: \(date.lastDayOfWeek)")
+        
         date = Date()
         print("Changing to current date: \(date)")
+        
+        // test is same day
+        print("Is same day?: \(date.isSameDate(date: Date().add(days: 1)))")
         
         // test year
         print("Year: \(date.year)")
@@ -194,6 +206,9 @@ class ViewController: UIViewController {
         print(date.add(months: 1))
         print(date.add(months: -1)) // you can negative numbers
         
+        // test add week
+        print(date.add(weeks: 1))
+        
         // test add days
         print(date.add(days: 1))
         
@@ -212,31 +227,64 @@ class ViewController: UIViewController {
         
         print("Very short weekday: \(String(describing: day.getVeryShortWeekdaySymbols()))")
         
+        print("Example month: \(month)")
+        
+        print("Short month: \(String(describing: month.getShortMonthSymbols()))")
+        
+        print("Very short month: \(String(describing: month.getVeryShortMonthSymbols()))")
+        
         newLine()
     }
     
+    /// method to test extensions of Calendar
     private func testCalendarExtensions() {
         
         print("Calendar EXTENSIONS")
         print("====================")
         
+        let calendar = Calendar.currentUTC
+        
         // test get days of current year
-        print("Days of current year: \(Calendar.currentUTC.getDaysOfYear())")
+        print("Days of current year: \(calendar.getDaysOfYear())")
         
         // test get days of specific year
-        print("Days of 2021 year: \(Calendar.currentUTC.getDaysOfYear(year: 2021))")
+        print("Days of 2021 year: \(calendar.getDaysOfYear(year: 2021))")
         
         // test get days of current month
-        print("Days of current month: \(Calendar.currentUTC.getDaysOfMonth())")
+        print("Days of current month: \(calendar.getDaysOfMonth())")
         
         // test get days of specific month
-        print("Days of first month: \(Calendar.currentUTC.getDaysOfMonth(month: 1))")
+        print("Days of January: \(calendar.getDaysOfMonth(month: .january))")
+        
+        // test get days of specific month and year
+        print("Days of February of 2020: \(calendar.getDaysOfMonth(month: .february, year: 2020))")
         
         // test first day of current month
-        print("First day of current month: \(Calendar.currentUTC.firstDayOfCurrentMonth)")
+        print("First day of current month: \(calendar.firstDayOfCurrentMonth)")
         
         // test last day of current month
-        print("Last day of current month: \(Calendar.currentUTC.lastDayOfCurrentMonth)")
+        print("Last day of current month: \(calendar.lastDayOfCurrentMonth)")
+        
+        // test first day of current week
+        print("First day of current week: \(calendar.firstDayOfCurrentWeek)")
+        
+        // test last day of current week
+        print("Last day of current week: \(calendar.lastDayOfCurrentWeek)")
+        
+        // test year
+        print("Year: \(calendar.year)")
+        
+        // test month
+        print("Month: \(calendar.month)")
+        
+        // test day
+        print("Day: \(calendar.day)")
+        
+        // test hour
+        print("Hour: \(calendar.hour)")
+        
+        // test minute
+        print("Minutes: \(calendar.minute)")
         
         newLine()
     }
@@ -306,6 +354,28 @@ extension ViewController {
         }
     }
     
+    /// method that navigates to Calendar
+    private func navigateToCalendar() {
+        print("navigateToCalendar")
+        
+        let storyBoard = UIStoryboard(name: "Calendar", bundle: nil)
+        if let viewController: CalendarViewController = storyBoard.instantiateInitialViewController() as? CalendarViewController,
+            let navController = navigationController {
+            navController.show(viewController, sender: nil)
+        }
+    }
+    
+    /// method that navigate to Editors
+    private func navigateToEditors() {
+        print("navigateToCalendar")
+        
+        let storyBoard = UIStoryboard(name: "Editors", bundle: nil)
+        if let viewController: EditorsViewController = storyBoard.instantiateInitialViewController() as? EditorsViewController,
+            let navController = navigationController {
+            navController.show(viewController, sender: nil)
+        }
+    }
+    
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
@@ -335,6 +405,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         case 1: navigateToCustomCell()
         case 2: navigateToCustomCellCollectionView()
         case 3: navigateToFAB()
+        case 4: navigateToCalendar()
+        case 5: navigateToEditors()
         default: break
         }
     }
